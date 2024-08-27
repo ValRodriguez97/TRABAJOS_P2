@@ -6,8 +6,8 @@ package co.edu.uniquindio;
 public class Tecnico extends Empleado implements Contribuyente {
     private String especialidad;
 
-    public Tecnico(String nombre, String idEmpleado, String especialidad, Departamento departamento) {
-        super(nombre, idEmpleado, departamento);
+    public Tecnico(String nombre, String idEmpleado, int edad, String especialidad, Departamento departamento) {
+        super(nombre, idEmpleado, edad, departamento);
         this.especialidad = especialidad;
         assert especialidad != null && !especialidad.isEmpty();
     }

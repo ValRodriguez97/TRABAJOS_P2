@@ -1,5 +1,6 @@
 package co.edu.uniquindio;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,11 +8,13 @@ public class Empresa {
     private List<Proyecto> listProyectos;
     private List<Empleado> listEmpleados;
     private List<Departamento> listDepartamentos;
+    private List<Empleado> listEmpleadosMayores;
 
     public Empresa() {
         listProyectos = new ArrayList<>();
         listEmpleados = new ArrayList<>();
         listDepartamentos = new ArrayList<>();
+        listEmpleadosMayores = new ArrayList<>();
     }
 
     /**
@@ -73,7 +76,7 @@ public class Empresa {
      *
      * @param proyecto a añadir
      */
-    public void agregarProyectos( Proyecto proyecto) {
+    public void agregarProyectos(Proyecto proyecto) {
         listProyectos.add(proyecto);
     }
 
@@ -82,7 +85,7 @@ public class Empresa {
      *
      * @param empleado a añadir
      */
-    public void agregarEmpleados( Empleado empleado) {
+    public void agregarEmpleados(Empleado empleado) {
         listEmpleados.add(empleado);
     }
 
@@ -91,7 +94,42 @@ public class Empresa {
      *
      * @param departamento a añadir
      */
-    public void agregarDepartamentos( Departamento departamento) {
+    public void agregarDepartamentos(Departamento departamento) {
         listDepartamentos.add(departamento);
     }
+
+    public void mayorEdad() {
+        for (Empleado empleado : listEmpleados){
+            if (empleado.getEdad() >= 18){
+                listEmpleadosMayores.add(empleado);
+
+            }
+        }
+        JOptionPane.showMessageDialog(null,listEmpleadosMayores);
+    }
+
+    public void identificarEmpleado(){
+        for (Object obj : listEmpleados) {
+            if (obj instanceof Gerente) {
+                JOptionPane.showMessageDialog(null,((Gerente) obj).getNombre() + "  IdEmpleado: " + ((Gerente) obj).getIdEmpleado() + " es un Gerente.");
+            } else if (obj instanceof Tecnico) {
+                JOptionPane.showMessageDialog(null,((Tecnico) obj).getNombre() + "  IdEmpleado: " + ((Tecnico) obj).getIdEmpleado() + " es un Técnico.");
+            } else if (obj instanceof Empleado) {
+                JOptionPane.showMessageDialog(null,((Empleado) obj).getNombre() + "  IdEmpleado: " + ((Empleado) obj).getIdEmpleado() + " es un Empleado.");
+            } else {
+                JOptionPane.showMessageDialog(null,obj + " es de un tipo desconocido.");
+            }
+        }
+    }
+
+    public void eliminarEmpleado(){
+        String idEmpleadoEliminar = JOptionPane.showInputDialog("Ingurese el id del empleado a eliminar:");
+        for (Empleado empleado : listEmpleados) {
+            if(empleado.getIdEmpleado().equals(idEmpleadoEliminar)){
+                listEmpleados.remove(empleado);
+            }
+        }
+        JOptionPane.showMessageDialog(null, "El empleado fue eliminado exitosamente");
+    }
 }
+

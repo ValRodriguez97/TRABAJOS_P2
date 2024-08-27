@@ -6,6 +6,7 @@ package co.edu.uniquindio;
 public class Empleado {
     private String nombre;
     private String idEmpleado;
+    private int edad;
     private Departamento departamentoAsociado;
 
     /**
@@ -15,9 +16,10 @@ public class Empleado {
      * @param idEmpleado id del empleado
      * @param departamentoAsociado del empleado
      */
-    public Empleado(String nombre, String idEmpleado, Departamento departamentoAsociado) {
+    public Empleado(String nombre, String idEmpleado, int edad, Departamento departamentoAsociado) {
         this.nombre = nombre;
         this.idEmpleado = idEmpleado;
+        this.edad = edad;
         this.departamentoAsociado = departamentoAsociado;
         assert nombre != null && !nombre.isEmpty();
         assert idEmpleado != null && !idEmpleado.isEmpty();
@@ -69,6 +71,13 @@ public class Empleado {
         return departamentoAsociado;
     }
 
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
     /**
      * Método que devuelva la representación en cadema de la clase Empleado
      *

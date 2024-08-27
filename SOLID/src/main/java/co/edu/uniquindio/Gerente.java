@@ -12,8 +12,8 @@ public class Gerente extends Empleado implements Contribuyente {
      * @param idEmpleado del gerente
      * @param departamento del gerente
      */
-    public Gerente(String nombre, String idEmpleado, Departamento departamento) {
-        super(nombre, idEmpleado, departamento);
+    public Gerente(String nombre, String idEmpleado, int edad, Departamento departamento) {
+        super(nombre, idEmpleado, edad, departamento);
     }
 
     /**

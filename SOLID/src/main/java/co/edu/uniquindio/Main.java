@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 public class Main {
         public static void main(String[] args) {
             Departamento depto1 = new Departamento("Tecnología", "D002");
-            Gerente gerente = new Gerente("Alice", "1", depto1);
-            Tecnico tecnico = new Tecnico("Bob", "2", "Procesamiento de datos", depto1);
+            Gerente gerente = new Gerente("Alice", "1", 20, depto1);
+            Tecnico tecnico = new Tecnico("Bob", "2", 24,"Procesamiento de datos", depto1);
 
             Departamento depto = new Departamento("Tecnología", "D001");
             depto.agregarEmpleado(tecnico);
@@ -47,6 +47,9 @@ public class Main {
                             "Añadir Empleado",
                             "Añadir Técnico",
                             "Añadir Gerente",
+                            "Mayores de edad",
+                            "Identificar empleado",
+                            "Eliminar Empleado",
                             "Añadir Departamento",
                             "Añadir Proyecto",
                             "Assignar Empleado a Departamento",
@@ -75,24 +78,33 @@ public class Main {
                                     agregarGerente();
                                     break;
                                 case 3:
-                                    agregarDepartamento();
+                                    empresa.mayorEdad();
                                     break;
                                 case 4:
-                                    agregarProyecto();
+                                    empresa.identificarEmpleado();
                                     break;
                                 case 5:
-                                    asignarEmpleadoADepartamento();
+                                    empresa.eliminarEmpleado();
                                     break;
                                 case 6:
-                                    asignarEmpleadoAProyecto();
+                                    agregarDepartamento();
                                     break;
                                 case 7:
-                                    asignarGerenteAProyecto();
+                                    agregarProyecto();
                                     break;
                                 case 8:
-                                    mostrarDatos();
+                                    asignarEmpleadoADepartamento();
                                     break;
                                 case 9:
+                                    asignarEmpleadoAProyecto();
+                                    break;
+                                case 10:
+                                    asignarGerenteAProyecto();
+                                    break;
+                                case 11:
+                                    mostrarDatos();
+                                    break;
+                                case 12:
                                     JOptionPane.showMessageDialog(null, "Saliendo...");
                                     System.exit(0);
                                     break;
@@ -119,6 +131,7 @@ public class Main {
         private static void agregarEmpleado() {
             String nombre = JOptionPane.showInputDialog("Ingrese el nombre del empleado:");
             String idEmpleado = JOptionPane.showInputDialog("Ingrese el ID del empleado:");
+            int edad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la edad del empleado:"));
             String codigoDepartamento = JOptionPane.showInputDialog("Ingrese el código del departamento del empleado:");
 
             Departamento departamento = empresa.getListDepartamentos().stream().filter(d -> d.getCodigo().equals(codigoDepartamento)).findFirst().orElse(null);
@@ -127,7 +140,7 @@ public class Main {
                 return;
             }
 
-            Empleado empleado = new Empleado(nombre, idEmpleado, departamento);
+            Empleado empleado = new Empleado(nombre, idEmpleado, edad, departamento);
             empresa.agregarEmpleados(empleado);
         }
 
@@ -135,6 +148,7 @@ public class Main {
             String nombre = JOptionPane.showInputDialog("Ingrese el nombre del técnico:");
             String idEmpleado = JOptionPane.showInputDialog("Ingrese el ID del técnico:");
             String codigoDepartamento = JOptionPane.showInputDialog("Ingrese el código del departamento del técnico:");
+            int edad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la edad del empleado:"));
             String especialidad = JOptionPane.showInputDialog("Ingrese la especialidad del técnico:");
 
             Departamento departamento = empresa.getListDepartamentos().stream().filter(d -> d.getCodigo().equals(codigoDepartamento)).findFirst().orElse(null);
@@ -143,13 +157,14 @@ public class Main {
                 return;
             }
 
-            Tecnico tecnico = new Tecnico(nombre, idEmpleado, especialidad, departamento);
+            Tecnico tecnico = new Tecnico(nombre, idEmpleado, edad, especialidad, departamento);
             empresa.agregarEmpleados(tecnico);
         }
 
         private static void agregarGerente() {
             String nombre = JOptionPane.showInputDialog("Ingrese el nombre del gerente:");
             String idEmpleado = JOptionPane.showInputDialog("Ingrese el ID del gerente:");
+            int edad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la edad del empleado:"));
             String codigoDepartamento = JOptionPane.showInputDialog("Ingrese el código del departamento del gerente:");
 
             Departamento departamento = empresa.getListDepartamentos().stream().filter(d -> d.getCodigo().equals(codigoDepartamento)).findFirst().orElse(null);
@@ -158,7 +173,7 @@ public class Main {
                 return;
             }
 
-            Gerente gerente = new Gerente(nombre, idEmpleado, departamento);
+            Gerente gerente = new Gerente(nombre, idEmpleado, edad, departamento);
             empresa.agregarEmpleados(gerente);
         }
 
