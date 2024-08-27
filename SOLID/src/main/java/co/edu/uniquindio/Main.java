@@ -56,10 +56,17 @@ public class Main {
                         "Salir"
                 };
 
-                int eleccion = JOptionPane.showOptionDialog(null, "Seleccione una opción", "Menú Interactivo",
-                        JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones[0]);
+                JList<String> listaOpciones = new JList<>(opciones);
+                 listaOpciones.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+                 JScrollPane scrollPane = new JScrollPane(listaOpciones);
+                 int eleccion = JOptionPane.showConfirmDialog(null, scrollPane, "Menú Opciones", JOptionPane.OK_CANCEL_OPTION);
+                 if (eleccion == JOptionPane.OK_OPTION) {
+                     int indiceSeleccionado = listaOpciones.getSelectedIndex();
 
-                switch (eleccion) {
+                //int eleccion = JOptionPane.showOptionDialog(null, "Seleccione una opción", "Menú Interactivo",
+                       // JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones[0]);
+
+                switch (indiceSeleccionado) {
                     case 0:
                         agregarEmpleado();
                         break;
@@ -95,6 +102,10 @@ public class Main {
                         JOptionPane.showMessageDialog(null, "Opción no válida.");
                         System.exit(0);
                 }
+                } else if (eleccion == JOptionPane.CANCEL_OPTION) {
+                     JOptionPane.showMessageDialog(null, "Saliendo...");
+                     System.exit(0);
+                 }
             }
         }
 
