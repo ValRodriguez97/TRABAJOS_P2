@@ -1,18 +1,30 @@
 package co.edu.uniquindio;
 
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Departamento depto1 = new Departamento("Tecnología", "D002");
+        Gerente gerente = new Gerente("Alice", 1, depto1);
+        Tecnico tecnico = new Tecnico("Bob", 2, "Procesamiento de datos", depto1);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        Departamento depto = new Departamento("Tecnología", "D001");
+        depto.agregarGerente(gerente);
+        depto.agregarEmpleado(tecnico);
+
+        Proyecto proyecto = new Proyecto("Desarrollo de Software", "P001");
+        proyecto.asignarGerente(gerente);
+        proyecto.asignarEmpleado(tecnico);
+
+        System.out.println(depto);
+        System.out.println(proyecto);
+
+        gerente.contribuir();
+        tecnico.contribuir();
     }
 }
