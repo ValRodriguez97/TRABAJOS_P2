@@ -34,7 +34,7 @@ public class Main {
             menu.iniciarMenu();
         }
 
-    public static class MenuInteractivo {
+        public static class MenuInteractivo {
             private static Empresa empresa;
 
             public MenuInteractivo(Empresa empresa) {
@@ -44,71 +44,78 @@ public class Main {
             public void iniciarMenu() {
                 while (true) {
                     String[] opciones = {
-                        "Añadir Empleado",
-                        "Añadir Técnico",
-                        "Añadir Gerente",
-                        "Añadir Departamento",
-                        "Añadir Proyecto",
-                        "Assignar Empleado a Departamento",
-                        "Asignar Empleado a Proyecto",
-                        "Asignar Gerente a Proyecto",
-                        "Mostrar Datos",
-                        "Salir"
-                };
+                            "Añadir Empleado",
+                            "Añadir Técnico",
+                            "Añadir Gerente",
+                            "Añadir Departamento",
+                            "Añadir Proyecto",
+                            "Assignar Empleado a Departamento",
+                            "Asignar Empleado a Proyecto",
+                            "Asignar Gerente a Proyecto",
+                            "Mostrar Datos",
+                            "Salir"
+                    };
 
-                JList<String> listaOpciones = new JList<>(opciones);
-                 listaOpciones.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-                 JScrollPane scrollPane = new JScrollPane(listaOpciones);
-                 int eleccion = JOptionPane.showConfirmDialog(null, scrollPane, "Menú Opciones", JOptionPane.OK_CANCEL_OPTION);
-                 if (eleccion == JOptionPane.OK_OPTION) {
-                     int indiceSeleccionado = listaOpciones.getSelectedIndex();
+                    JList<String> listaOpciones = new JList<>(opciones);
+                    listaOpciones.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+                    JScrollPane scrollPane = new JScrollPane(listaOpciones);
+                    int eleccion = JOptionPane.showConfirmDialog(null, scrollPane, "Menú Opciones", JOptionPane.OK_CANCEL_OPTION);
+                    switch (eleccion) {
+                        case JOptionPane.OK_OPTION:
+                            int indiceSeleccionado = listaOpciones.getSelectedIndex();
 
-                //int eleccion = JOptionPane.showOptionDialog(null, "Seleccione una opción", "Menú Interactivo",
-                       // JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones[0]);
-
-                switch (indiceSeleccionado) {
-                    case 0:
-                        agregarEmpleado();
-                        break;
-                    case 1:
-                        agregarTecnico();
-                        break;
-                    case 2:
-                        agregarGerente();
-                        break;
-                    case 3:
-                        agregarDepartamento();
-                        break;
-                    case 4:
-                        agregarProyecto();
-                        break;
-                    case 5:
-                        asignarEmpleadoADepartamento();
-                        break;
-                    case 6:
-                        asignarEmpleadoAProyecto();
-                        break;
-                    case 7:
-                        asignarGerenteAProyecto();
-                        break;
-                    case 8:
-                        mostrarDatos();
-                        break;
-                    case 9:
-                        JOptionPane.showMessageDialog(null, "Saliendo...");
-                        System.exit(0);
-                        break;
-                    default:
-                        JOptionPane.showMessageDialog(null, "Opción no válida.");
-                        System.exit(0);
+                            switch (indiceSeleccionado) {
+                                case 0:
+                                    agregarEmpleado();
+                                    break;
+                                case 1:
+                                    agregarTecnico();
+                                    break;
+                                case 2:
+                                    agregarGerente();
+                                    break;
+                                case 3:
+                                    agregarDepartamento();
+                                    break;
+                                case 4:
+                                    agregarProyecto();
+                                    break;
+                                case 5:
+                                    asignarEmpleadoADepartamento();
+                                    break;
+                                case 6:
+                                    asignarEmpleadoAProyecto();
+                                    break;
+                                case 7:
+                                    asignarGerenteAProyecto();
+                                    break;
+                                case 8:
+                                    mostrarDatos();
+                                    break;
+                                case 9:
+                                    JOptionPane.showMessageDialog(null, "Saliendo...");
+                                    System.exit(0);
+                                    break;
+                                default:
+                                    JOptionPane.showMessageDialog(null, "Opción no válida.");
+                                    System.exit(0);
+                            }
+                            break;
+                        case JOptionPane.CANCEL_OPTION:
+                            JOptionPane.showMessageDialog(null, "Saliendo...");
+                            System.exit(0);
+                            break;
+                        case JOptionPane.CLOSED_OPTION:
+                            JOptionPane.showMessageDialog(null, "Saliendo...");
+                            System.exit(0);
+                            break;
+                        default:
+                            JOptionPane.showMessageDialog(null, "Opción no válida");
+                            System.exit(0);
+                    }
                 }
-                } else if (eleccion == JOptionPane.CANCEL_OPTION) {
-                     JOptionPane.showMessageDialog(null, "Saliendo...");
-                     System.exit(0);
-                 }
             }
-        }
-
+            
         private static void agregarEmpleado() {
             String nombre = JOptionPane.showInputDialog("Ingrese el nombre del empleado:");
             String idEmpleado = JOptionPane.showInputDialog("Ingrese el ID del empleado:");
