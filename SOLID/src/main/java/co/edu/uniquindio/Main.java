@@ -10,17 +10,17 @@ import java.util.stream.Collectors;
 public class Main {
     public class MenuInteractivo {
 
+        Empresa empresa  = new Empresa();
         private static List<Empleado> empleados = new ArrayList<>();
         private static List<Departamento> departamentos = new ArrayList<>();
         private static List<Proyecto> proyectos = new ArrayList<>();}
 
         public static void main(String[] args) {
         Departamento depto1 = new Departamento("Tecnología", "D002");
-        Gerente gerente = new Gerente("Alice", 1,depto1 );
-        Tecnico tecnico = new Tecnico("Bob", 2, "Procesamiento de datos", depto1);
+        Gerente gerente = new Gerente("Alice", "1",depto1 );
+        Tecnico tecnico = new Tecnico("Bob", "2", "Procesamiento de datos", depto1);
 
         Departamento depto = new Departamento("Tecnología", "D001");
-        depto.agregarGerente(gerente);
         depto.agregarEmpleado(tecnico);
 
         Proyecto proyecto = new Proyecto("Desarrollo de Software", "P001");
@@ -35,17 +35,18 @@ public class Main {
 
             while (true) {
                 String[] opciones = {
-                        "Agregar Empleado Normal",
-                        "Agregar Técnico",
-                        "Agregar Gerente",
-                        "Agregar Departamento",
-                        "Agregar Proyecto",
-                        "Asignar Empleado a Departamento",
+                        "Añadir Empleado",
+                        "Añadir Técnico",
+                        "Añadir Gerente",
+                        "Añadir Departamento",
+                        "Añadir Proyecto",
+                        "Assignar Empleado a Departamento",
                         "Asignar Empleado a Proyecto",
                         "Asignar Gerente a Proyecto",
                         "Mostrar Datos",
                         "Salir"
                 };
+                
                 int eleccion = JOptionPane.showOptionDialog(null, "Seleccione una opción", "Menú Interactivo",
                         JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones[0]);
 

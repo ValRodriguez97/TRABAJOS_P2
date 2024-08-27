@@ -1,23 +1,35 @@
 package co.edu.uniquindio;
 
-class Tecnico extends Empleado implements Contribuyente {
+/**
+ * Clase Técnico hereda los atributos de la clase Empleado e implementa el método de la interface Contribuyente
+ */
+public class Tecnico extends Empleado implements Contribuyente {
     private String especialidad;
-    public Tecnico(String nombre, int idEmpleado, String especialidad, Departamento departamento) {
+
+    public Tecnico(String nombre, String idEmpleado, String especialidad, Departamento departamento) {
         super(nombre, idEmpleado, departamento);
         this.especialidad = especialidad;
+        assert especialidad != null && !especialidad.isEmpty();
     }
 
+    /**
+     * Implementación del método de la interface Contribuyente
+     */
     @Override
     public void contribuir() {
         System.out.println(getNombre() + " está trabajando en tareas técnicas.");
     }
 
+    /**
+     * Método que devuelte la representación en cadena de la clase Tecnico
+     *
+     * @return representación en cadena de la clase Tecnico
+     */
     @Override
     public String toString() {
-        return "Técnico{" +
-                "nombre='" + getNombre() + '\'' +
-                ", idEmpleado=" + getIdEmpleado() +
-                ", departamento='" + getDepartamento() + '\'' +
-                '}';
+        return "Tecnico \n"
+                + "Nombre: " + getNombre() + "\n"
+                + "IdEmpleado: " + getIdEmpleado() + "\n"
+                + "Especialidad: " + especialidad + "\n";
     }
 }
