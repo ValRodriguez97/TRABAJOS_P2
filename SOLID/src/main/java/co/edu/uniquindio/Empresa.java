@@ -98,6 +98,9 @@ public class Empresa {
         listDepartamentos.add(departamento);
     }
 
+    /**
+     * Metodo para obtener la lista de mayores de edad
+     */
     public void mayorEdad() {
         for (Empleado empleado : listEmpleados){
             if (empleado.getEdad() >= 18){
@@ -108,6 +111,9 @@ public class Empresa {
         JOptionPane.showMessageDialog(null,listEmpleadosMayores);
     }
 
+    /**
+     * Metodo para saber que tipo de empleado es
+     */
     public void identificarEmpleado(){
         for (Object obj : listEmpleados) {
             if (obj instanceof Gerente) {
@@ -122,6 +128,9 @@ public class Empresa {
         }
     }
 
+    /**
+     * Metodo para eliminar un empleado
+     */
     public void eliminarEmpleado(){
         String idEmpleadoEliminar = JOptionPane.showInputDialog("Ingurese el id del empleado a eliminar:");
         for (Empleado empleado : listEmpleados) {

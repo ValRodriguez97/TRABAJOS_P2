@@ -71,10 +71,18 @@ public class Empleado {
         return departamentoAsociado;
     }
 
+    /**
+     * Metodo para obtener la edad del empleado
+     * @return edad
+     */
     public int getEdad() {
         return edad;
     }
 
+    /**
+     * Metodo para modificar la edad del empleado
+     * @param edad
+     */
     public void setEdad(int edad) {
         this.edad = edad;
     }
