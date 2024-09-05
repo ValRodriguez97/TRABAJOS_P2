@@ -14,4 +14,3 @@ public class ModelFactory {
         return instance;
     }
 }
-.
