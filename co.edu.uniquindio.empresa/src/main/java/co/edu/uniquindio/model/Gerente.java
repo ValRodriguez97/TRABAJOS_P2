@@ -1,5 +1,6 @@
 package co.edu.uniquindio.model;
 
+import co.edu.uniquindio.model.builder.EmpleadoBuilder;
 import co.edu.uniquindio.services.IContribuyente;
 
 /**
@@ -10,12 +11,10 @@ public class Gerente extends Empleado implements IContribuyente {
     /**
      * Método Constructor de la clase Gerente
      *
-     * @param nombre del gerente
-     * @param idEmpleado del gerente
-     * @param departamento del gerente
+     * @param empleadoBuilder
      */
-    public Gerente(String nombre, String idEmpleado, int edad, Departamento departamento) {
-        super(nombre, idEmpleado, edad, departamento);
+    public Gerente(EmpleadoBuilder empleadoBuilder) {
+        super(empleadoBuilder);
     }
 
     /**

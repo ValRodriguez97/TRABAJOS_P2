@@ -13,25 +13,16 @@ public class Empleado {
     /**
      * Método Constructor de la clase Empleado
      *
-     * @param nombre nombre del empleado
-     * @param idEmpleado id del empleado
-     * @param departamentoAsociado del empleado
+     * @param builder
      */
-    public Empleado(String nombre, String idEmpleado, int edad, Departamento departamentoAsociado) {
-        this.nombre = nombre;
-        this.idEmpleado = idEmpleado;
-        this.edad = edad;
-        this.departamentoAsociado = departamentoAsociado;
+    public Empleado(EmpleadoBuilder builder) {
+        this.nombre = builder.nombre();
+        this.idEmpleado = builder.idEmpleado();
+        this.edad = builder.edad();
+        this.departamentoAsociado = builder.departamento();
         assert nombre != null && !nombre.isEmpty();
         assert idEmpleado != null && !idEmpleado.isEmpty();
         assert departamentoAsociado != null;
-    }
-
-    /**
-     * Crear una instancia del constructor del objeto(Aplicacion del builder)
-     */
-    public static EmpleadoBuilder builder(){
-        return new EmpleadoBuilder();
     }
 
     /**
@@ -44,30 +35,12 @@ public class Empleado {
     }
 
     /**
-     * Método para establecer el nombre del empleado
-     *
-     * @param nombre nuevo nombre del empleado
-     */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    /**
      * Método para obtener la identificacion del empleado
      *
      * @return idEmpleado
      */
     public String getIdEmpleado() {
         return idEmpleado;
-    }
-
-    /**
-     * Método para establecer la identificación del empleado
-     *
-     * @return nuevo idEmpleado
-     */
-    public void setIdEmpleado(String idEmpleado) {
-        this.idEmpleado = idEmpleado;
     }
 
     /**
@@ -88,18 +61,18 @@ public class Empleado {
     }
 
     /**
-     * Metodo para modificar la edad del empleado
-     * @param edad
+     * Crear una instancia del constructor del objeto(Aplicacion del builder)
      */
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public static EmpleadoBuilder empleadobuilder(){
+        return new EmpleadoBuilder();
     }
+
     /**
      * Método que devuelva la representación en cadema de la clase Empleado
      *
      * @return representación en cadena de la clase Empleado
      */
-    @Override
+   @Override
     public String toString (){
         return "Empleado \n"
                 + "Nombre: " + nombre + "\n"

@@ -1,15 +1,18 @@
 package co.edu.uniquindio.model;
 
+import co.edu.uniquindio.model.builder.EmpleadoBuilder;
+import co.edu.uniquindio.model.builder.TecnicoBuilder;
 import co.edu.uniquindio.services.IContribuyente;
 
 /**
  * Clase Técnico hereda los atributos de la clase Empleado e implementa el método de la interface Contribuyente
  */
 public class Tecnico extends Empleado implements IContribuyente {
+    private EmpleadoBuilder empleadoBuilder;
     private String especialidad;
 
-    public Tecnico(String nombre, String idEmpleado, int edad, String especialidad, Departamento departamento) {
-        super(nombre, idEmpleado, edad, departamento);
+    public Tecnico(EmpleadoBuilder empleadoBuilder, String especialidad) {
+        super(empleadoBuilder);
         this.especialidad = especialidad;
         assert especialidad != null && !especialidad.isEmpty();
     }
@@ -20,6 +23,10 @@ public class Tecnico extends Empleado implements IContribuyente {
     @Override
     public void contribuir() {
         System.out.println(getNombre() + " está trabajando en tareas técnicas.");
+    }
+
+    public static TecnicoBuilder tecnicoBuilder (){
+        return new TecnicoBuilder();
     }
 
     /**

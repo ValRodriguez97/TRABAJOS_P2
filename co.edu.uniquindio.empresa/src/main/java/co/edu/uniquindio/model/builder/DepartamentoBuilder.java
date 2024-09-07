@@ -3,9 +3,9 @@ package co.edu.uniquindio.model.builder;
 import co.edu.uniquindio.model.Departamento;
 
 public class DepartamentoBuilder {
-    private String nombre, codigo;
+    private String nombre;
+    private String codigo;
 
-    public DepartamentoBuilder(){}
     public DepartamentoBuilder nombre(String nombre){
         this.nombre = nombre;
         return this;
@@ -17,6 +17,6 @@ public class DepartamentoBuilder {
     }
 
     public Departamento build(){
-        return new Departamento(nombre, codigo);
+        return new Departamento(this);
     }
 }

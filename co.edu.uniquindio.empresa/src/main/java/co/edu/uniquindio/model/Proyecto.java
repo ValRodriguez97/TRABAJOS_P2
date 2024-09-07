@@ -1,5 +1,8 @@
 package co.edu.uniquindio.model;
 
+import co.edu.uniquindio.model.builder.EmpresaBuilder;
+import co.edu.uniquindio.model.builder.ProyectoBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,12 +17,11 @@ public class Proyecto {
     /**
      * Método Constructor de la clase Proyecto
      *
-     * @param nombre nombre del Proyecto
-     * @param codigo código del Proyecto
+     * @param builder
      */
-    public Proyecto(String nombre, String codigo) {
-        this.nombre = nombre;
-        this.codigo = codigo;
+    public Proyecto(ProyectoBuilder builder) {
+        this.nombre = builder.nombre();
+        this.codigo = builder.codigo();
         this.empleadosAsignados = new ArrayList<>();
         assert nombre != null && !nombre.isEmpty();
         assert codigo != null && !codigo.isEmpty();
@@ -98,6 +100,9 @@ public class Proyecto {
         empleadosAsignados.add(empleado);
     }
 
+    public static ProyectoBuilder proyectobuilder() {
+        return new ProyectoBuilder();
+    }
     /**
      * Método que devuleve una representación en cadena de la clase Proyecto
      *

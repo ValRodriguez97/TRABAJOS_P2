@@ -17,7 +17,7 @@ public class Departamento {
      * @param nombre nombre del Departamento de la empresa
      * @param codigo codigo del Departamento de la empresa
      */
-    public Departamento(String nombre, String codigo) {
+    public Departamento(DepartamentoBuilder builder) {
         this.nombre = nombre;
         this.codigo = codigo;
         this.listEmpleados = new ArrayList<>();
@@ -95,6 +95,9 @@ public class Departamento {
         this.listEmpleados = empleados;
     }
 
+    public static DepartamentoBuilder departamentoBuilder (){
+        return new DepartamentoBuilder();
+    }
     /**
      * Método que devuelve la representación en cadena de la clase Departamento
      *
