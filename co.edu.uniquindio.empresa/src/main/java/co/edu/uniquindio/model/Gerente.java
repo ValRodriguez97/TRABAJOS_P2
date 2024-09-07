@@ -1,6 +1,7 @@
 package co.edu.uniquindio.model;
 
 import co.edu.uniquindio.model.builder.EmpleadoBuilder;
+import co.edu.uniquindio.model.builder.GerenteBuilder;
 import co.edu.uniquindio.services.IContribuyente;
 
 /**
@@ -25,6 +26,9 @@ public class Gerente extends Empleado implements IContribuyente {
         System.out.println(getNombre() + " está gestionando el proyecto.");
     }
 
+    public static GerenteBuilder gerenteBuilder(){
+        return new GerenteBuilder();
+    }
     /**
      * Método que devuelve la representación en cadena de la clase Gerente
      *

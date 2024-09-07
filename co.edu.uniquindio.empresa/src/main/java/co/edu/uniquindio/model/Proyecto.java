@@ -38,15 +38,6 @@ public class Proyecto {
     }
 
     /**
-     * Método para establecer el nombre del Proyecto
-     *
-     * @param nombre nuevo nombre del proyecto
-     */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    /**
      * Método para obtener el código del proyecto
      *
      * @return código del proyecto
@@ -55,14 +46,6 @@ public class Proyecto {
         return codigo;
     }
 
-    /**
-     * Método para establecer el codigo del proyecto de una empresa
-     *
-     * @param codigo nuevo código del proyecto
-     */
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
 
     /**
      * Método para obtener la lista de empleados asignados al proyecto
@@ -96,8 +79,8 @@ public class Proyecto {
      *
      * @param empleado a asignar
      */
-    public void asignarEmpleado(Empleado empleado) {
-        empleadosAsignados.add(empleado);
+    public void asignarEmpleado(Tecnico tecnico) {
+        empleadosAsignados.add(tecnico);
     }
 
     public static ProyectoBuilder proyectobuilder() {

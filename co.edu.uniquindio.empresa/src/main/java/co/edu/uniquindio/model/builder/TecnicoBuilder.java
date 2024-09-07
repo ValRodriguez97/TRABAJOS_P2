@@ -14,15 +14,43 @@ public class TecnicoBuilder {
         return empleadoBuilder;
     }
 
-    public String getEspecialidad() {
+    public String nombre(){
+        return nombre();
+    }
+
+    public String idEmpleado(){
+        return idEmpleado();
+    }
+
+    public int edad(){
+        return edad();
+    }
+
+    public TecnicoBuilder setNombre(String nombre){
+        this.empleadoBuilder.setNombre(nombre);
+        return this;
+    }
+
+    public TecnicoBuilder setIdEmpleado(String idEmpleado){
+        this.empleadoBuilder.setIdEmpleado(idEmpleado);
+        return this;
+    }
+
+    public TecnicoBuilder setEdad(int edad){
+        this.empleadoBuilder.setEdad(edad);
+        return this;
+    }
+
+    public String especialidad() {
         return especialidad;
     }
 
-    public void setEspecialidad(String especialidad) {
+    public TecnicoBuilder setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
+       return this;
     }
 
     public Tecnico build (){
-        return new Tecnico(empleadoBuilder, especialidad);
+        return new Tecnico(empleadoBuilder, this);
     }
 }
