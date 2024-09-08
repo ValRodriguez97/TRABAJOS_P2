@@ -1,9 +1,13 @@
 package co.edu.uniquindio.model;
+import co.edu.uniquindio.services.ICrudDepartamento;
+import co.edu.uniquindio.services.ICrudEmpleado;
+import co.edu.uniquindio.services.ICrudProyecto;
+
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Empresa {
+public class Empresa implements ICrudEmpleado, ICrudDepartamento, ICrudProyecto {
     private List<Proyecto> listProyectos;
     private List<Empleado> listEmpleados;
     private List<Departamento> listDepartamentos;
@@ -69,6 +73,133 @@ public class Empresa {
     public void setListDepartamentos(List<Departamento> listDepartamentos) {
         this.listDepartamentos = listDepartamentos;
     }
+
+    @Override
+    public boolean createDepartamento(String nombre, String codigo){
+        Departamento departamentoExistente = verificarDepartamento(codigo);
+        if(departamentoExistente == null){
+            Departamento newDepartamento = Departamento.departamentoBuilder().setNombre(nombre).setCodigo(codigo).build();
+            agregarDepartamentos(newDepartamento);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean updateDepartamento(String nombre, String codigo){
+        return false;
+    }
+
+    @Override
+    public boolean deleteDepartamento(String codigo){
+        return false;
+    }
+
+    @Override
+    public Departamento readDepartamento(String codigo){
+        return null;
+    }
+
+    @Override
+    public ArrayList<Departamento> getDepartamentos() {
+        return null;
+    }
+
+    private Departamento verificarDepartamento(String codigo){
+        Departamento departamentoExistente = null;
+        for (Departamento departamento : listDepartamentos){
+            if(departamento.getCodigo().equals(codigo)){
+                departamentoExistente = departamento;
+                break;
+            }
+        }
+        return departamentoExistente;
+    }
+
+    @Override
+    public boolean createProyecto(String nombre, String codigo){
+        Proyecto proyectoExistente = verificarroyecto(codigo);
+        if(proyectoExistente == null){
+            Proyecto newProyecto = Proyecto.proyectobuilder().setNombre(nombre).setCodigo(codigo).build();
+            agregarProyectos(newProyecto);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean updateProyecto(String nombre, String codigo){
+        return false;
+    }
+
+    @Override
+    public boolean deleteProyecto(String codigo){
+        return false;
+    }
+
+    @Override
+    public Proyecto readProyecto(String codigo){
+        return null;
+    }
+
+    @Override
+    public ArrayList<Proyecto> getProyectos() {
+        return null;
+    }
+
+    private Proyecto verificarroyecto(String codigo){
+        Proyecto proyectoExistente = null;
+        for(Proyecto proyecto : listProyectos){
+            if(proyecto.getCodigo().equals(codigo)){
+                proyectoExistente = proyecto;
+                break;
+            }
+        }
+        return proyectoExistente;
+    }
+
+    @Override
+    public boolean createEmpleado(String nombre, String idEmpleado, int edad, Departamento departamento){
+        Empleado empleadoExistente = null;
+        if (empleadoExistente == null){
+            Empleado newEmpleado = Empleado.empleadobuilder().setNombre(nombre).setIdEmpleado(idEmpleado).setEdad(edad).setDepartamento(departamento).build();
+            agregarEmpleados(newEmpleado);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean updateEmpleado(String nombre, String idEmpleado, int edad, Departamento departamento){
+        return false;
+    }
+
+    @Override
+    public boolean deleteEmpleado(String idEmpleado){
+        return false;
+    }
+
+    @Override
+    public Empleado readEmpleado(String idEmpleado){
+        return null;
+    }
+
+    @Override
+    public ArrayList<Empleado> getEmpleados() {
+        return null;
+    }
+
+    private Empleado verificarEmpleado(String idEmpleado){
+        Empleado empleadoExistente = null;
+        for(Empleado empleado : listEmpleadosMayores){
+            if(empleado.getIdEmpleado().equals(idEmpleado)){
+                empleadoExistente = empleado;
+                break;
+            }
+        }
+        return empleadoExistente;
+    }
+
 
     /**
      * Método para añadir proyectos a la lista de proyectos de una empresa

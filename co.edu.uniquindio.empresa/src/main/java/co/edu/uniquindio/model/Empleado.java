@@ -79,4 +79,20 @@ public class Empleado {
                 + "IdEmpleado: " + idEmpleado + "\n"
                 + "Departamento: " + departamentoAsociado + "\n";
     }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setIdEmpleado(String idEmpleado) {
+        this.idEmpleado = idEmpleado;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public void setDepartamentoAsociado(Departamento departamentoAsociado) {
+        this.departamentoAsociado = departamentoAsociado;
+    }
 }
