@@ -14,18 +14,6 @@ public class TecnicoBuilder {
         return empleadoBuilder;
     }
 
-    public String nombre(){
-        return nombre();
-    }
-
-    public String idEmpleado(){
-        return idEmpleado();
-    }
-
-    public int edad(){
-        return edad();
-    }
-
     public TecnicoBuilder setNombre(String nombre){
         this.empleadoBuilder.setNombre(nombre);
         return this;

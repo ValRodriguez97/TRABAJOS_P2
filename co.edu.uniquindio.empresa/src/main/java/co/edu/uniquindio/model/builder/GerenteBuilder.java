@@ -2,45 +2,25 @@ package co.edu.uniquindio.model.builder;
 
 import co.edu.uniquindio.model.Gerente;
 
-public class GerenteBuilder {
-    private EmpleadoBuilder empleadoBuilder;
-
-    public GerenteBuilder() {
-        this.empleadoBuilder = new EmpleadoBuilder();
-    }
-
-    public EmpleadoBuilder getEmpleadoBuilder() {
-        return empleadoBuilder;
-    }
-
-    public String nombre (){
-        return  nombre();
-    }
-
-    public String idEmpleado(){
-        return idEmpleado();
-    }
-
-    public int edad (){
-        return edad();
-    }
+public class GerenteBuilder extends EmpleadoBuilder{
+    public GerenteBuilder(){}
 
     public GerenteBuilder setNombre (String nombre){
-        this.empleadoBuilder.setNombre(nombre);
+        super.setNombre(nombre);
         return this;
     }
 
     public GerenteBuilder setIdEmpleado (String idEmpleado){
-        this.empleadoBuilder.setIdEmpleado(idEmpleado);
+        super.setIdEmpleado(idEmpleado);
         return this;
     }
 
     public GerenteBuilder setEdad (int edad){
-        this.empleadoBuilder.setEdad(edad);
+        super.setEdad(edad);
         return this;
     }
 
     public Gerente build (){
-        return  new Gerente(empleadoBuilder);
+        return  new Gerente(this);
     }
 }
