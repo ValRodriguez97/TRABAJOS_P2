@@ -67,19 +67,6 @@ public class Empleado {
         return new EmpleadoBuilder();
     }
 
-    /**
-     * Método que devuelva la representación en cadema de la clase Empleado
-     *
-     * @return representación en cadena de la clase Empleado
-     */
-   @Override
-    public String toString (){
-        return "Empleado \n"
-                + "Nombre: " + nombre + "\n"
-                + "IdEmpleado: " + idEmpleado + "\n"
-                + "Departamento: " + departamentoAsociado + "\n";
-    }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -95,4 +82,18 @@ public class Empleado {
     public void setDepartamentoAsociado(Departamento departamentoAsociado) {
         this.departamentoAsociado = departamentoAsociado;
     }
+
+    /**
+     * Método que devuelva la representación en cadema de la clase Empleado
+     *
+     * @return representación en cadena de la clase Empleado
+     */
+   @Override
+    public String toString (){
+        return "Empleado \n"
+                + "Nombre: " + nombre + "\n"
+                + "IdEmpleado: " + idEmpleado + "\n"
+                + "Departamento: " + departamentoAsociado + "\n";
+    }
+
 }

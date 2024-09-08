@@ -25,10 +25,7 @@ public class Departamento {
         assert codigo != null && !codigo.isEmpty();
     }
 
-    /**
-     * Crear una instancia del constructor del objeto (Aplicacion del builder)
-     */
-    public static DepartamentoBuilder builder(){
+    public static DepartamentoBuilder departamentoBuilder() {
         return new DepartamentoBuilder();
     }
 
@@ -38,6 +35,9 @@ public class Departamento {
      * @param empleado a agregar
      */
     public void agregarEmpleado(Empleado empleado) {
+       if (empleado ==null){
+           throw new IllegalArgumentException("No se puede agregar el empleado");
+        }
         listEmpleados.add(empleado);
     }
 
@@ -93,10 +93,6 @@ public class Departamento {
      */
     public void setEmpleados(List<Empleado> empleados) {
         this.listEmpleados = empleados;
-    }
-
-    public static DepartamentoBuilder departamentoBuilder (){
-        return new DepartamentoBuilder();
     }
     /**
      * Método que devuelve la representación en cadena de la clase Departamento
