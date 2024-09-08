@@ -1,8 +1,13 @@
 package co.edu.uniquindio.factory;
 
 import co.edu.uniquindio.model.*;
+import co.edu.uniquindio.services.ICrudDepartamento;
+import co.edu.uniquindio.services.ICrudEmpleado;
+import co.edu.uniquindio.services.ICrudProyecto;
 
-public class ModelFactory {
+import java.util.ArrayList;
+
+public class ModelFactory implements ICrudDepartamento, ICrudProyecto, ICrudEmpleado {
     private static ModelFactory instance;
     private static Empresa empresa;
 
@@ -15,6 +20,81 @@ public class ModelFactory {
             instance = new ModelFactory();
         }
         return instance;
+    }
+
+    @Override
+    public boolean createDepartamento(String nombre, String codigo){
+        return empresa.createDepartamento(nombre, codigo);
+    }
+
+    @Override
+    public Departamento readDepartamento(String codigo){
+        return empresa.readDepartamento(codigo);
+    }
+
+    @Override
+    public boolean updateDepartamento (String nombre, String codigo){
+        return empresa.updateDepartamento(nombre, codigo);
+    }
+
+    @Override
+    public boolean deleteDepartamento(String codigo){
+        return empresa.deleteDepartamento(codigo);
+    }
+
+    @Override
+    public ArrayList<Departamento> getDepartamentos(){
+        return empresa.getDepartamentos();
+    }
+
+    @Override
+    public boolean createProyecto(String nombre, String codigo){
+        return empresa.createProyecto(nombre, codigo);
+    }
+
+    @Override
+    public Proyecto readProyecto(String codigo){
+        return empresa.readProyecto(codigo);
+    }
+
+    @Override
+    public boolean updateProyecto(String nombre, String codigo){
+        return empresa.updateProyecto(nombre, codigo);
+    }
+
+    @Override
+    public boolean deleteProyecto(String idEmpleado) {
+        return empresa.deleteEmpleado(idEmpleado);
+    }
+
+    @Override
+    public ArrayList<Proyecto> getProyectos(){
+        return empresa.getProyectos();
+    }
+
+    @Override
+    public boolean createEmpleado(String nombre, String idEmpleado, int edad, Departamento departamento){
+        return empresa.createEmpleado(nombre, idEmpleado, edad, departamento);
+    }
+
+    @Override
+    public Empleado readEmpleado(String idEmpleado){
+        return empresa.readEmpleado(idEmpleado);
+    }
+
+    @Override
+    public boolean updateEmpleado (String nombre, String idEmpleado, int edad, Departamento departamento){
+        return empresa.updateEmpleado(nombre, idEmpleado, edad, departamento);
+    }
+
+    @Override
+    public boolean deleteEmpleado(String codigo){
+        return empresa.deleteEmpleado(codigo);
+    }
+
+    @Override
+    public ArrayList<Empleado> getEmpleados(){
+        return empresa.getEmpleados();
     }
 
     private static void inicializarDatos() {
