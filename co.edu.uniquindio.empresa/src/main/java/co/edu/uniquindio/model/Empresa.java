@@ -5,6 +5,7 @@ import co.edu.uniquindio.services.ICrudProyecto;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Empresa implements ICrudEmpleado, ICrudDepartamento, ICrudProyecto {
@@ -87,22 +88,35 @@ public class Empresa implements ICrudEmpleado, ICrudDepartamento, ICrudProyecto 
 
     @Override
     public boolean updateDepartamento(String nombre, String codigo){
+        Departamento departamentoExistente = verificarDepartamento(codigo);
+        if(departamentoExistente == null){
+            departamentoExistente.setNombre(nombre);
+            departamentoExistente.setCodigo(codigo);
+            return true;
+        }
         return false;
     }
 
     @Override
     public boolean deleteDepartamento(String codigo){
+        Departamento departamentoExistente = verificarDepartamento(codigo);
+        if(departamentoExistente == null){
+            listDepartamentos.remove(departamentoExistente);
+            return true;
+        }
         return false;
     }
 
     @Override
     public Departamento readDepartamento(String codigo){
-        return null;
+        return verificarDepartamento(codigo);
     }
+
+
 
     @Override
     public ArrayList<Departamento> getDepartamentos() {
-        return null;
+        return new ArrayList<>(listDepartamentos);
     }
 
     private Departamento verificarDepartamento(String codigo){
@@ -118,7 +132,7 @@ public class Empresa implements ICrudEmpleado, ICrudDepartamento, ICrudProyecto 
 
     @Override
     public boolean createProyecto(String nombre, String codigo){
-        Proyecto proyectoExistente = verificarroyecto(codigo);
+        Proyecto proyectoExistente = verificarproyecto(codigo);
         if(proyectoExistente == null){
             Proyecto newProyecto = Proyecto.proyectobuilder().setNombre(nombre).setCodigo(codigo).build();
             agregarProyectos(newProyecto);
@@ -129,25 +143,36 @@ public class Empresa implements ICrudEmpleado, ICrudDepartamento, ICrudProyecto 
 
     @Override
     public boolean updateProyecto(String nombre, String codigo){
+        Proyecto proyectoExistente = verificarproyecto(codigo);
+        if(proyectoExistente == null){
+            proyectoExistente.setNombre(nombre);
+            proyectoExistente.setCodigo(codigo);
+            return true;
+        }
         return false;
     }
 
     @Override
     public boolean deleteProyecto(String codigo){
+        Proyecto proyectoExistente = verificarproyecto(codigo);
+        if(proyectoExistente == null){
+            listProyectos.remove(proyectoExistente);
+            return true;
+        }
         return false;
     }
 
     @Override
     public Proyecto readProyecto(String codigo){
-        return null;
+        return verificarproyecto(codigo);
     }
 
     @Override
     public ArrayList<Proyecto> getProyectos() {
-        return null;
+        return new ArrayList<>(listProyectos);
     }
 
-    private Proyecto verificarroyecto(String codigo){
+    private Proyecto verificarproyecto(String codigo){
         Proyecto proyectoExistente = null;
         for(Proyecto proyecto : listProyectos){
             if(proyecto.getCodigo().equals(codigo)){
@@ -171,22 +196,35 @@ public class Empresa implements ICrudEmpleado, ICrudDepartamento, ICrudProyecto 
 
     @Override
     public boolean updateEmpleado(String nombre, String idEmpleado, int edad, Departamento departamento){
+        Empleado empleadoExistente = verificarEmpleado(idEmpleado);
+        if(empleadoExistente == null){
+            empleadoExistente.setNombre(nombre);
+            empleadoExistente.setIdEmpleado(idEmpleado);
+            empleadoExistente.setEdad(edad);
+            empleadoExistente.setDepartamentoAsociado(departamento);
+            return true;
+        }
         return false;
     }
 
     @Override
     public boolean deleteEmpleado(String idEmpleado){
+        Empleado empleadoExistente = verificarEmpleado(idEmpleado);
+        if(empleadoExistente == null){
+            listEmpleados.remove(empleadoExistente);
+            return true;
+        }
         return false;
     }
 
     @Override
     public Empleado readEmpleado(String idEmpleado){
-        return null;
+        return verificarEmpleado(idEmpleado);
     }
 
     @Override
     public ArrayList<Empleado> getEmpleados() {
-        return null;
+        return new ArrayList<>(listEmpleados);
     }
 
     private Empleado verificarEmpleado(String idEmpleado){
