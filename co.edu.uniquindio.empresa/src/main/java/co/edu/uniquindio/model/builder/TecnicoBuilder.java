@@ -1,44 +1,40 @@
 package co.edu.uniquindio.model.builder;
 
+import co.edu.uniquindio.model.Departamento;
 import co.edu.uniquindio.model.Tecnico;
 
-public class TecnicoBuilder {
-    private EmpleadoBuilder empleadoBuilder;
-    private String especialidad;
+public class TecnicoBuilder extends EmpleadoBuilder{
+   private String especialidad;
 
-    public TecnicoBuilder() {
-        this.empleadoBuilder = new EmpleadoBuilder();
+    public TecnicoBuilder(){
     }
 
-    public EmpleadoBuilder getEmpleadoBuilder() {
-        return empleadoBuilder;
-    }
-
-    public TecnicoBuilder setNombre(String nombre){
-        this.empleadoBuilder.setNombre(nombre);
+    public  TecnicoBuilder setNombre(String nombre){
+        super.setNombre(nombre);
         return this;
     }
 
     public TecnicoBuilder setIdEmpleado(String idEmpleado){
-        this.empleadoBuilder.setIdEmpleado(idEmpleado);
+        super.setIdEmpleado(idEmpleado);
         return this;
     }
 
     public TecnicoBuilder setEdad(int edad){
-        this.empleadoBuilder.setEdad(edad);
+        super.setEdad(edad);
         return this;
     }
 
-    public String especialidad() {
-        return especialidad;
+    public TecnicoBuilder setDepartamento(Departamento departamento){
+        super.setDepartamento(departamento);
+        return this;
     }
 
-    public TecnicoBuilder setEspecialidad(String especialidad) {
+    public TecnicoBuilder setEspecialidad(String especialidad){
         this.especialidad = especialidad;
-       return this;
+        return this;
     }
 
-    public Tecnico build (){
-        return new Tecnico(empleadoBuilder, this);
+    public Tecnico build(){
+        return new Tecnico(nombre(), idEmpleado(), edad(), departamento(), this);
     }
 }

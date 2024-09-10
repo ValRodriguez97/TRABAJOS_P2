@@ -21,6 +21,6 @@ public class GerenteBuilder extends EmpleadoBuilder{
     }
 
     public Gerente build (){
-        return  new Gerente(this);
+        return  new Gerente(nombre(), idEmpleado(), edad(), departamento());
     }
 }

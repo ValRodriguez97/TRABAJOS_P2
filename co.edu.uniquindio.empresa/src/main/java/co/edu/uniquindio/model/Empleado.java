@@ -13,12 +13,15 @@ public class Empleado {
     /**
      * Método Constructor de la clase Empleado
      *
-     * @param builder
+     * @param nombre
+     * @param idEmpleado
+     * @param edad
+     * @param departamentoAsociado
      */
-    public Empleado(EmpleadoBuilder builder) {
-        this.nombre = builder.nombre();
-        this.idEmpleado = builder.idEmpleado();
-        this.edad = builder.edad();
+    public Empleado(String nombre, String idEmpleado, int edad, Departamento departamentoAsociado) {
+        this.nombre = nombre;
+        this.idEmpleado = idEmpleado;
+        this.edad = edad;
         this.departamentoAsociado = builder.departamento();
         assert nombre != null && !nombre.isEmpty();
         assert idEmpleado != null && !idEmpleado.isEmpty();

@@ -14,12 +14,13 @@ public class Departamento {
     /**
      * Método Constructor de la clase Departamento
      *
-     * @param builder
+     * @param nombre
+     * @param codigo
      *
      */
-    public Departamento(DepartamentoBuilder builder) {
-        this.nombre = builder.nombre();
-        this.codigo = builder.codigo();
+    public Departamento(String nombre, String codigo) {
+        this.nombre = nombre;
+        this.codigo = codigo;
         this.listEmpleados = new ArrayList<>();
         assert nombre != null && !nombre.isEmpty();
         assert codigo != null && !codigo.isEmpty();

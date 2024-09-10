@@ -14,8 +14,8 @@ public class Gerente extends Empleado implements IContribuyente {
      *
      * @param empleadoBuilder
      */
-    public Gerente(EmpleadoBuilder empleadoBuilder) {
-        super(empleadoBuilder);
+    public Gerente(String nombre, String idEmpleado, int edad, Departamento departamentoAsociado) {
+        super(nombre, idEmpleado, edad, departamentoAsociado);
     }
 
     /**

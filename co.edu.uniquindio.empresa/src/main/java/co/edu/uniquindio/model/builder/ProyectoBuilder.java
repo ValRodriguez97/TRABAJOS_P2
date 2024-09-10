@@ -25,7 +25,7 @@ public class ProyectoBuilder {
     }
 
     public Proyecto build() {
-        return new Proyecto(this);
+        return new Proyecto(nombre, codigo);
     }
 }
 

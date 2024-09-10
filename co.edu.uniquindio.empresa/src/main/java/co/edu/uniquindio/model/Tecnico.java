@@ -11,8 +11,8 @@ public class Tecnico extends Empleado implements IContribuyente {
     private EmpleadoBuilder empleadoBuilder;
     private String especialidad;
 
-    public Tecnico(EmpleadoBuilder empleadoBuilder, TecnicoBuilder especialidad) {
-        super(empleadoBuilder);
+    public Tecnico(String nombre, String idEmpleado, int edad, Departamento departamentoAsociador, TecnicoBuilder especialidad) {
+        super(nombre, idEmpleado, edad, departamentoAsociador);
         this.especialidad = tecnicoBuilder().especialidad();
         assert especialidad != null;
     }

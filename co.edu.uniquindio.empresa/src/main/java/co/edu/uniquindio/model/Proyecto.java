@@ -19,9 +19,9 @@ public class Proyecto {
      *
      * @param builder
      */
-    public Proyecto(ProyectoBuilder builder) {
-        this.nombre = builder.nombre();
-        this.codigo = builder.codigo();
+    public Proyecto(String nombre, String codigo) {
+        this.nombre = nombre;
+        this.codigo = codigo;
         this.empleadosAsignados = new ArrayList<>();
         assert nombre != null && !nombre.isEmpty();
         assert codigo != null && !codigo.isEmpty();

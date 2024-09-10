@@ -44,6 +44,6 @@ public class EmpleadoBuilder {
     }
 
     public Empleado build(){
-        return new Empleado(this);
+        return new Empleado(nombre, idEmpleado, edad, departamento);
     }
 }
