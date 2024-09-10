@@ -1,5 +1,6 @@
 package co.edu.uniquindio.model.builder;
 
+import co.edu.uniquindio.model.Departamento;
 import co.edu.uniquindio.model.Gerente;
 
 public class GerenteBuilder extends EmpleadoBuilder{
@@ -17,6 +18,11 @@ public class GerenteBuilder extends EmpleadoBuilder{
 
     public GerenteBuilder setEdad (int edad){
         super.setEdad(edad);
+        return this;
+    }
+
+    public GerenteBuilder setDepartamento(Departamento departamento){
+        super.setDepartamento(departamento);
         return this;
     }
 
