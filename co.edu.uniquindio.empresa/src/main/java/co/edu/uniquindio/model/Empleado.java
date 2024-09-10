@@ -22,7 +22,7 @@ public class Empleado {
         this.nombre = nombre;
         this.idEmpleado = idEmpleado;
         this.edad = edad;
-        this.departamentoAsociado = builder.departamento();
+        this.departamentoAsociado = departamentoAsociado;
         assert nombre != null && !nombre.isEmpty();
         assert idEmpleado != null && !idEmpleado.isEmpty();
         assert departamentoAsociado != null;

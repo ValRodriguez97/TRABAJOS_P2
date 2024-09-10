@@ -13,7 +13,6 @@ public class ModelFactory implements ICrudDepartamento, ICrudProyecto, ICrudEmpl
 
     private ModelFactory() {
         inicializarDatos();
-
     }
 
     public static ModelFactory getInstance() {
