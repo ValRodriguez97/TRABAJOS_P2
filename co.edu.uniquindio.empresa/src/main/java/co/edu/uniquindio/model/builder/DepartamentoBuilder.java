@@ -25,7 +25,7 @@ public class DepartamentoBuilder {
     }
 
     public Departamento build(){
-        return new Departamento(this);
+        return new Departamento(nombre(), codigo());
     }
 
 }

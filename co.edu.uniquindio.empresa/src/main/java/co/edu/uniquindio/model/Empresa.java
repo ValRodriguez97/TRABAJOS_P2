@@ -100,7 +100,7 @@ public class Empresa implements ICrudEmpleado, ICrudDepartamento, ICrudProyecto 
     @Override
     public boolean deleteDepartamento(String codigo){
         Departamento departamentoExistente = verificarDepartamento(codigo);
-        if(departamentoExistente == null){
+        if(departamentoExistente != null){
             listDepartamentos.remove(departamentoExistente);
             return true;
         }
