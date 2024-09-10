@@ -13,6 +13,7 @@ public class ModelFactory implements ICrudDepartamento, ICrudProyecto, ICrudEmpl
 
     private ModelFactory() {
         inicializarDatos();
+
     }
 
     public static ModelFactory getInstance() {
@@ -63,8 +64,8 @@ public class ModelFactory implements ICrudDepartamento, ICrudProyecto, ICrudEmpl
     }
 
     @Override
-    public boolean deleteProyecto(String idEmpleado) {
-        return empresa.deleteEmpleado(idEmpleado);
+    public boolean deleteProyecto(String codigo) {
+        return empresa.deleteEmpleado(codigo);
     }
 
     @Override

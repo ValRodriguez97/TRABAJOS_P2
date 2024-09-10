@@ -187,7 +187,7 @@ public class Empresa implements ICrudEmpleado, ICrudDepartamento, ICrudProyecto 
     public boolean createEmpleado(String nombre, String idEmpleado, int edad, Departamento departamento){
         Empleado empleadoExistente = null;
         if (empleadoExistente == null){
-            Empleado newEmpleado = Empleado.empleadobuilder().setNombre(nombre).setIdEmpleado(idEmpleado).setEdad(edad).setDepartamento(departamento).build();
+            Empleado newEmpleado =  Empleado.empleadobuilder().setNombre(nombre).setIdEmpleado(idEmpleado).setEdad(edad).setDepartamento(departamento).build();
             agregarEmpleados(newEmpleado);
             return true;
         }
