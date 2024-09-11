@@ -41,6 +41,13 @@ public class Tecnico extends Empleado implements IContribuyente, IPrototypeTecni
         return tecnico;
     }
 
+    public String getEspecialidad(){
+        return especialidad;
+    }
+
+    public void setEspecialidad(String especialidad){
+        this.especialidad = especialidad;
+    }
     /**
      * Método que devuelte la representación en cadena de la clase Tecnico
      *

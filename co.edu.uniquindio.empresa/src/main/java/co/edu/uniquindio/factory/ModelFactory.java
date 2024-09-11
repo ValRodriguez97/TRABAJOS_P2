@@ -9,7 +9,7 @@ public class ModelFactory implements ICrudDepartamento, ICrudProyecto, ICrudGere
     private static ModelFactory instance;
     private static Empresa empresa;
 
-    private ModelFactory() {
+    public ModelFactory() {
         inicializarDatos();
     }
 
