@@ -7,26 +7,26 @@ public class GerenteBuilder extends EmpleadoBuilder{
     public GerenteBuilder(){}
 
     public GerenteBuilder setNombre (String nombre){
-        super.setNombre(nombre);
+        super.self();
         return this;
     }
 
     public GerenteBuilder setIdEmpleado (String idEmpleado){
-        super.setIdEmpleado(idEmpleado);
+        super.self();
         return this;
     }
 
     public GerenteBuilder setEdad (int edad){
-        super.setEdad(edad);
+        super.self();
         return this;
     }
 
     public GerenteBuilder setDepartamento(Departamento departamento){
-        super.setDepartamento(departamento);
+        super.self();
         return this;
     }
 
     public Gerente build (){
-        return  new Gerente(nombre(), idEmpleado(), edad(), departamento());
+        return  new Gerente(self().nombre, self().idEmpleado, self().edad, self().departamento);
     }
 }

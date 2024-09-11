@@ -3,10 +3,12 @@ package co.edu.uniquindio.model;
 import java.util.ArrayList;
 import java.util.List;
 import co.edu.uniquindio.model.builder.DepartamentoBuilder;
+import co.edu.uniquindio.services.IPrototypeDepto;
+
 /**
  * Clase Departamento
  */
-public class Departamento {
+public class Departamento implements IPrototypeDepto {
     private String nombre;
     private String codigo;
     private List<Empleado> listEmpleados;
@@ -94,6 +96,17 @@ public class Departamento {
      */
     public void setEmpleados(List<Empleado> empleados) {
         this.listEmpleados = empleados;
+    }
+
+    @Override
+    public IPrototypeDepto clone(){
+        Departamento depto = null;
+        try{
+            depto= (Departamento) super.clone();
+        } catch (CloneNotSupportedException e){
+            e.printStackTrace();
+        }
+        return depto;
     }
     /**
      * Método que devuelve la representación en cadena de la clase Departamento

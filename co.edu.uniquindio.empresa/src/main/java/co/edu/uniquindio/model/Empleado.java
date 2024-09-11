@@ -1,10 +1,11 @@
 package co.edu.uniquindio.model;
 
 import co.edu.uniquindio.model.builder.EmpleadoBuilder;
+
 /**
  * Clase Empleado
  */
-public class Empleado {
+public abstract class Empleado {
     private String nombre;
     private String idEmpleado;
     private int edad;
@@ -99,4 +100,5 @@ public class Empleado {
                 + "Departamento: " + departamentoAsociado + "\n";
     }
 
+    public abstract void contribuir();
 }

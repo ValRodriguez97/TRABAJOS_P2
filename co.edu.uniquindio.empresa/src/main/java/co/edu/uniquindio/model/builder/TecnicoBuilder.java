@@ -10,22 +10,22 @@ public class TecnicoBuilder extends EmpleadoBuilder{
     }
 
     public  TecnicoBuilder setNombre(String nombre){
-        super.setNombre(nombre);
+        super.self();
         return this;
     }
 
     public TecnicoBuilder setIdEmpleado(String idEmpleado){
-        super.setIdEmpleado(idEmpleado);
+        super.self();
         return this;
     }
 
     public TecnicoBuilder setEdad(int edad){
-        super.setEdad(edad);
+        super.self();
         return this;
     }
 
     public TecnicoBuilder setDepartamento(Departamento departamento){
-        super.setDepartamento(departamento);
+        super.self();
         return this;
     }
 
@@ -35,6 +35,6 @@ public class TecnicoBuilder extends EmpleadoBuilder{
     }
 
     public Tecnico build(){
-        return new Tecnico(nombre(), idEmpleado(), edad(), departamento(), this);
+        return new Tecnico(self().nombre, self().idEmpleado, self().edad, self().departamento,especialidad);
     }
 }

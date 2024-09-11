@@ -2,48 +2,46 @@ package co.edu.uniquindio.model.builder;
 
 import co.edu.uniquindio.model.Departamento;
 import co.edu.uniquindio.model.Empleado;
-public class EmpleadoBuilder {
-    private String nombre;
-    private String idEmpleado;
-    private int edad;
-    private Departamento departamento;
 
-    public String nombre(){
-        return nombre;
-    }
+public class EmpleadoBuilder<T extends  EmpleadoBuilder <T>> {
+    protected String nombre;
+    protected String idEmpleado;
+    protected int edad;
+    protected Departamento departamento;
 
-    public String idEmpleado(){
-        return idEmpleado;
-    }
+   public T nombre (String nombre) {
+       this.nombre = nombre;
+       return self ();
+   }
 
-    public int edad(){
-        return edad;
-    }
+   public T idEmpleado (String idEmpleado) {
+       this.idEmpleado = idEmpleado;
+       return self ();
+   }
 
-    public Departamento departamento(){
-        return departamento;
-    }
-    public EmpleadoBuilder setNombre(String nombre){
-        this.nombre = nombre;
-        return this;
-    }
+   public T edad (int edad) {
+       this.edad = edad;
+       return self ();
+   }
 
-    public EmpleadoBuilder setIdEmpleado(String idEmpleado){
-        this.idEmpleado = idEmpleado;
-        return this;
-    }
+   public T departamento (Departamento departamento) {
+       this.departamento = departamento;
+       return self();
+   }
 
-    public EmpleadoBuilder setEdad(int edad){
-        this.edad = edad;
-        return this;
-    }
+   @SuppressWarnings("unchecked")
+   protected T self () {
+       return (T) this;
+   }
 
-    public EmpleadoBuilder setDepartamento(Departamento departamento){
-        this.departamento = departamento;
-        return this;
-    }
+   public Empleado build (){
+       return new Empleado(nombre, idEmpleado, edad, departamento) {
+           @Override
+           public void contribuir (){
 
-    public Empleado build(){
-        return new Empleado(nombre, idEmpleado, edad, departamento);
-    }
+           }
+       };
+   }
+
+
 }

@@ -1,22 +1,23 @@
 package co.edu.uniquindio.model;
 import co.edu.uniquindio.services.ICrudDepartamento;
-import co.edu.uniquindio.services.ICrudEmpleado;
+import co.edu.uniquindio.services.ICrudGerente;
 import co.edu.uniquindio.services.ICrudProyecto;
+import co.edu.uniquindio.services.ICrudTecnico;
 
-import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class Empresa implements ICrudEmpleado, ICrudDepartamento, ICrudProyecto {
+public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudGerente, ICrudTecnico {
     private List<Proyecto> listProyectos;
-    private List<Empleado> listEmpleados;
+    private List<Gerente> listGerentes;
+    private List<Tecnico> listTecnicos;
     private List<Departamento> listDepartamentos;
     private List<Empleado> listEmpleadosMayores;
 
     public Empresa() {
         listProyectos = new ArrayList<>();
-        listEmpleados = new ArrayList<>();
+        listGerentes = new ArrayList<>();
+        listTecnicos = new ArrayList<>();
         listDepartamentos = new ArrayList<>();
         listEmpleadosMayores = new ArrayList<>();
     }
@@ -40,24 +41,6 @@ public class Empresa implements ICrudEmpleado, ICrudDepartamento, ICrudProyecto 
     }
 
     /**
-     * Método para obtener la lista de empleados de una empresa
-     *
-     * @return lista de empleados
-     */
-    public List<Empleado> getListEmpleados() {
-        return listEmpleados;
-    }
-
-    /**
-     * Método para establecer la lista de empleados de una empresa
-     *
-     * @param listEmpleados nueva lista de empleados
-     */
-    public void setListEmpleados(List<Empleado> listEmpleados) {
-        this.listEmpleados = listEmpleados;
-    }
-
-    /**
      * Método para obtener la lista de departamentos de una empresa
      *
      * @return lista de departamentos  de una empresa
@@ -75,11 +58,28 @@ public class Empresa implements ICrudEmpleado, ICrudDepartamento, ICrudProyecto 
         this.listDepartamentos = listDepartamentos;
     }
 
+    public List<Gerente> getListGerentes() {
+        return listGerentes;
+    }
+
+    public void setListGerentes(List<Gerente> listGerentes) {
+        this.listGerentes = listGerentes;
+    }
+
+    public List<Tecnico> getListTecnicos() {
+        return listTecnicos;
+    }
+
+    public void setListTecnicos(List<Tecnico> listTecnicos) {
+        this.listTecnicos = listTecnicos;
+    }
+
+
     @Override
-    public boolean createDepartamento(String nombre, String codigo){
-        Departamento departamentoExistente = verificarDepartamento(codigo);
+    public boolean createDepartamento(Departamento departamento){
+        Departamento departamentoExistente = verificarDepartamento(departamento.getCodigo());
         if(departamentoExistente == null){
-            Departamento newDepartamento = Departamento.departamentoBuilder().setNombre(nombre).setCodigo(codigo).build();
+            Departamento newDepartamento = Departamento.departamentoBuilder().setNombre(departamento.getNombre()).setCodigo(departamento.getCodigo()).build();
             agregarDepartamentos(newDepartamento);
             return true;
         }
@@ -87,11 +87,11 @@ public class Empresa implements ICrudEmpleado, ICrudDepartamento, ICrudProyecto 
     }
 
     @Override
-    public boolean updateDepartamento(String nombre, String codigo){
-        Departamento departamentoExistente = verificarDepartamento(codigo);
+    public boolean updateDepartamento(Departamento departamento){
+        Departamento departamentoExistente = verificarDepartamento(departamento.getCodigo());
         if(departamentoExistente == null){
-            departamentoExistente.setNombre(nombre);
-            departamentoExistente.setCodigo(codigo);
+            departamentoExistente.setNombre(departamento.getNombre());
+            departamentoExistente.setCodigo(departamento.getCodigo());
             return true;
         }
         return false;
@@ -131,10 +131,10 @@ public class Empresa implements ICrudEmpleado, ICrudDepartamento, ICrudProyecto 
     }
 
     @Override
-    public boolean createProyecto(String nombre, String codigo){
-        Proyecto proyectoExistente = verificarproyecto(codigo);
+    public boolean createProyecto(Proyecto proyecto){
+        Proyecto proyectoExistente = verificarproyecto(proyecto.getCodigo());
         if(proyectoExistente == null){
-            Proyecto newProyecto = Proyecto.proyectobuilder().setNombre(nombre).setCodigo(codigo).build();
+            Proyecto newProyecto = Proyecto.proyectobuilder().setNombre(proyecto.getNombre()).setCodigo(proyecto.getCodigo()).build();
             agregarProyectos(newProyecto);
             return true;
         }
@@ -142,11 +142,11 @@ public class Empresa implements ICrudEmpleado, ICrudDepartamento, ICrudProyecto 
     }
 
     @Override
-    public boolean updateProyecto(String nombre, String codigo){
-        Proyecto proyectoExistente = verificarproyecto(codigo);
+    public boolean updateProyecto(Proyecto proyecto){
+        Proyecto proyectoExistente = verificarproyecto(proyecto.getCodigo());
         if(proyectoExistente == null){
-            proyectoExistente.setNombre(nombre);
-            proyectoExistente.setCodigo(codigo);
+            proyectoExistente.setNombre(proyecto.getNombre());
+            proyectoExistente.setCodigo(proyecto.getCodigo());
             return true;
         }
         return false;
@@ -184,128 +184,140 @@ public class Empresa implements ICrudEmpleado, ICrudDepartamento, ICrudProyecto 
     }
 
     @Override
-    public boolean createEmpleado(String nombre, String idEmpleado, int edad, Departamento departamento){
-        Empleado empleadoExistente = null;
-        if (empleadoExistente == null){
-            Empleado newEmpleado =  Empleado.empleadobuilder().setNombre(nombre).setIdEmpleado(idEmpleado).setEdad(edad).setDepartamento(departamento).build();
-            agregarEmpleados(newEmpleado);
+    public boolean createGerente (Gerente gerente){
+        Gerente gerenteExistente  = null;
+        if(gerenteExistente == null){
+            Gerente newGerente = Gerente.gerenteBuilder().setNombre(gerente.getNombre()). setIdEmpleado(gerente.getIdEmpleado()). setEdad(gerente.getEdad()). setDepartamento(gerente.getDepartamentoAsociado()).build();
+            agregarGerente(newGerente);
             return true;
         }
         return false;
     }
 
     @Override
-    public boolean updateEmpleado(String nombre, String idEmpleado, int edad, Departamento departamento){
-        Empleado empleadoExistente = verificarEmpleado(idEmpleado);
-        if(empleadoExistente == null){
-            empleadoExistente.setNombre(nombre);
-            empleadoExistente.setIdEmpleado(idEmpleado);
-            empleadoExistente.setEdad(edad);
-            empleadoExistente.setDepartamentoAsociado(departamento);
+    public boolean updateGerente(Gerente gerente){
+        Gerente gerenteExistente = null;
+        if(gerenteExistente == null){
+            gerenteExistente.setNombre(gerente.getNombre());
+            gerenteExistente.setIdEmpleado(gerente.getIdEmpleado());
+            gerenteExistente.setEdad(gerente.getEdad());
+            gerenteExistente.setDepartamentoAsociado(gerente.getDepartamentoAsociado());
             return true;
         }
         return false;
     }
 
     @Override
-    public boolean deleteEmpleado(String idEmpleado){
-        Empleado empleadoExistente = verificarEmpleado(idEmpleado);
-        if(empleadoExistente == null){
-            listEmpleados.remove(empleadoExistente);
+    public boolean deleteGerente(String idEmpleado){
+        Gerente gerenteExistente = verificarGerente(idEmpleado);
+        if(gerenteExistente == null){
+            listGerentes.remove(gerenteExistente);
             return true;
         }
         return false;
     }
 
     @Override
-    public Empleado readEmpleado(String idEmpleado){
-        return verificarEmpleado(idEmpleado);
+    public Gerente readGerente(String idEmpleado){
+        return verificarGerente(idEmpleado);
     }
 
     @Override
-    public ArrayList<Empleado> getEmpleados() {
-        return new ArrayList<>(listEmpleados);
+    public ArrayList<Gerente> getGerentes() {
+        return new ArrayList<>(listGerentes);
     }
 
-    private Empleado verificarEmpleado(String idEmpleado){
-        Empleado empleadoExistente = null;
-        for(Empleado empleado : listEmpleadosMayores){
-            if(empleado.getIdEmpleado().equals(idEmpleado)){
-                empleadoExistente = empleado;
+    private Gerente verificarGerente(String idEmpleado){
+        Gerente gerenteExistente = null;
+        for(Gerente gerente : listGerentes){
+            if(gerente.getIdEmpleado().equals(idEmpleado)){
+
                 break;
             }
         }
-        return empleadoExistente;
+        return gerenteExistente;
     }
 
-
-    /**
-     * Método para añadir proyectos a la lista de proyectos de una empresa
-     *
-     * @param proyecto a añadir
-     */
-    public void agregarProyectos(Proyecto proyecto) {
-        listProyectos.add(proyecto);
+    @Override
+    public boolean createTecnico (Tecnico tecnico){
+        Tecnico tecnicoExistente = null;
+        if(tecnicoExistente == null){
+            Tecnico newTecnico = Tecnico.tecnicoBuilder().setNombre(tecnico.getNombre()).setIdEmpleado(tecnico.getIdEmpleado()).setEdad(tecnico.getEdad()). setDepartamento(tecnico.getDepartamentoAsociado()).build();
+            agregarTecnico(newTecnico);
+            return true;
+        }
+        return false;
     }
 
-    /**
-     * Método para añadir empleados a la lista de empleados de una empresa
-     *
-     * @param empleado a añadir
-     */
-    public void agregarEmpleados(Empleado empleado) {
-        listEmpleados.add(empleado);
+    @Override
+    public boolean updateTecnico(Tecnico tecnico){
+        Tecnico tecnicoExistente = null;
+        if(tecnicoExistente == null){
+            tecnicoExistente.setNombre(tecnico.getNombre());
+            tecnicoExistente.setIdEmpleado(tecnico.getIdEmpleado());
+            tecnicoExistente.setEdad(tecnico.getEdad());
+            tecnicoExistente.setDepartamentoAsociado(tecnico.getDepartamentoAsociado());
+            return true;
+        }
+        return false;
     }
 
-    /**
-     * Método para añadir departamentos a la lista de departamentos de una empresa
-     *
-     * @param departamento a añadir
-     */
-    public void agregarDepartamentos(Departamento departamento) {
-        listDepartamentos.add(departamento);
+    @Override
+    public boolean deleteTecnico(String idEmpleado){
+        Tecnico tecnicoExistente = verificarTecnico(idEmpleado);
+        if(tecnicoExistente == null){
+            listTecnicos.remove(tecnicoExistente);
+            return true;
+        }
+        return false;
     }
 
-    /**
-     * Metodo para obtener la lista de mayores de edad
-     */
-    public void mayorEdad() {
-        for (Empleado empleado : listEmpleados){
-            if (empleado.getEdad() >= 18){
-                listEmpleadosMayores.add(empleado);
+    @Override
+    public Tecnico readTecnico(String idEmpleado){
+        return verificarTecnico(idEmpleado);
+    }
 
+    @Override
+    public ArrayList<Tecnico> getTecnicos() {
+        return new ArrayList<>(listTecnicos);
+    }
+
+    private Tecnico verificarTecnico(String idEmpleado) {
+        Tecnico tecnicoExistente = null;
+        for (Tecnico tecnico : listTecnicos) {
+            if (tecnico.getIdEmpleado().equals(idEmpleado)) {
+                tecnicoExistente = tecnico;
+                break;
             }
         }
-        JOptionPane.showMessageDialog(null,listEmpleadosMayores);
+        return tecnicoExistente;
+        }
+
+
+        /**
+         * Método para añadir proyectos a la lista de proyectos de una empresa
+         *
+         * @param proyecto a añadir
+         */
+        public void agregarProyectos(Proyecto proyecto){
+            listProyectos.add(proyecto);
+        }
+
+        /**
+         * Método para añadir departamentos a la lista de departamentos de una empresa
+         *
+         * @param departamento a añadir
+         */
+        public void agregarDepartamentos (Departamento departamento){
+            listDepartamentos.add(departamento);
+        }
+        public void agregarGerente (Gerente gerente) {
+            listGerentes.add(gerente);
+        }
+
+        public void agregarTecnico(Tecnico tecnico) {
+            listTecnicos.add(tecnico);
+        }
+
     }
 
-    /**
-     * Metodo para saber que tipo de empleado es
-     */
-    public void identificarEmpleado(){
-        for (Object obj : listEmpleados) {
-            if (obj instanceof Gerente) {
-                JOptionPane.showMessageDialog(null,((Gerente) obj).getNombre() + "  IdEmpleado: " + ((Gerente) obj).getIdEmpleado() + " es un Gerente.");
-            } else if (obj instanceof Tecnico) {
-                JOptionPane.showMessageDialog(null,((Tecnico) obj).getNombre() + "  IdEmpleado: " + ((Tecnico) obj).getIdEmpleado() + " es un Técnico.");
-            } else if (obj instanceof Empleado) {
-                JOptionPane.showMessageDialog(null,((Empleado) obj).getNombre() + "  IdEmpleado: " + ((Empleado) obj).getIdEmpleado() + " es un Empleado.");
-            } else {
-                JOptionPane.showMessageDialog(null,obj + " es de un tipo desconocido.");
-            }
-        }
-    }
-
-    /**
-     * Metodo para eliminar un empleado
-     */
-    public void eliminarEmpleado(){
-        String idEmpleadoEliminar = JOptionPane.showInputDialog("Ingurese el id del empleado a eliminar:");
-        for (Empleado empleado : listEmpleados) {
-            if(empleado.getIdEmpleado().equals(idEmpleadoEliminar)){
-                listEmpleados.remove(empleado);
-            }
-        }
-        JOptionPane.showMessageDialog(null, "El empleado fue eliminado exitosamente");
-    }
-}

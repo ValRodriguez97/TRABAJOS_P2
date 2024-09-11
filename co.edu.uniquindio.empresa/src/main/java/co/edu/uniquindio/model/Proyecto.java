@@ -1,6 +1,7 @@
 package co.edu.uniquindio.model;
 
 import co.edu.uniquindio.model.builder.ProyectoBuilder;
+import co.edu.uniquindio.services.IPrototypeProyecto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 /**
  * Clase Proyecto perteneciente a la empresa
  */
-public class Proyecto {
+public class Proyecto implements IPrototypeProyecto {
     private String nombre;
     private String codigo;
     private List<Empleado> empleadosAsignados;
@@ -16,7 +17,8 @@ public class Proyecto {
     /**
      * Método Constructor de la clase Proyecto
      *
-     * @param builder
+     * @param nombre
+     * @param codigo
      */
     public Proyecto(String nombre, String codigo) {
         this.nombre = nombre;
@@ -76,7 +78,7 @@ public class Proyecto {
     /**
      * Método para asignar un empleado al proyecto
      *
-     * @param empleado a asignar
+     * @param tecnico a asignar
      */
     public void asignarEmpleado(Tecnico tecnico) {
         empleadosAsignados.add(tecnico);
@@ -85,6 +87,17 @@ public class Proyecto {
     public static ProyectoBuilder proyectobuilder() {
         return new ProyectoBuilder();
     }
+    @Override
+    public IPrototypeProyecto clone(){
+        Proyecto proyecto = null;
+        try {
+            proyecto = (Proyecto)  super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return proyecto;
+    }
+
     /**
      * Método que devuleve una representación en cadena de la clase Proyecto
      *

@@ -1,13 +1,11 @@
 package co.edu.uniquindio.factory;
 
 import co.edu.uniquindio.model.*;
-import co.edu.uniquindio.services.ICrudDepartamento;
-import co.edu.uniquindio.services.ICrudEmpleado;
-import co.edu.uniquindio.services.ICrudProyecto;
+import co.edu.uniquindio.services.*;
 
 import java.util.ArrayList;
 
-public class ModelFactory implements ICrudDepartamento, ICrudProyecto, ICrudEmpleado {
+public class ModelFactory implements ICrudDepartamento, ICrudProyecto, ICrudGerente, ICrudTecnico{
     private static ModelFactory instance;
     private static Empresa empresa;
 
@@ -23,8 +21,8 @@ public class ModelFactory implements ICrudDepartamento, ICrudProyecto, ICrudEmpl
     }
 
     @Override
-    public boolean createDepartamento(String nombre, String codigo){
-        return empresa.createDepartamento(nombre, codigo);
+    public boolean createDepartamento(Departamento departamento){
+        return empresa.createDepartamento(departamento);
     }
 
     @Override
@@ -33,8 +31,8 @@ public class ModelFactory implements ICrudDepartamento, ICrudProyecto, ICrudEmpl
     }
 
     @Override
-    public boolean updateDepartamento (String nombre, String codigo){
-        return empresa.updateDepartamento(nombre, codigo);
+    public boolean updateDepartamento (Departamento departamento){
+        return empresa.updateDepartamento(departamento);
     }
 
     @Override
@@ -48,8 +46,8 @@ public class ModelFactory implements ICrudDepartamento, ICrudProyecto, ICrudEmpl
     }
 
     @Override
-    public boolean createProyecto(String nombre, String codigo){
-        return empresa.createProyecto(nombre, codigo);
+    public boolean createProyecto(Proyecto proyecto){
+        return empresa.createProyecto(proyecto);
     }
 
     @Override
@@ -58,43 +56,67 @@ public class ModelFactory implements ICrudDepartamento, ICrudProyecto, ICrudEmpl
     }
 
     @Override
-    public boolean updateProyecto(String nombre, String codigo){
-        return empresa.updateProyecto(nombre, codigo);
+    public boolean updateProyecto(Proyecto proyecto){
+        return empresa.updateProyecto(proyecto);
     }
 
     @Override
     public boolean deleteProyecto(String codigo) {
-        return empresa.deleteEmpleado(codigo);
+        return empresa.deleteProyecto(codigo);
     }
 
     @Override
     public ArrayList<Proyecto> getProyectos(){
         return empresa.getProyectos();
     }
-
     @Override
-    public boolean createEmpleado(String nombre, String idEmpleado, int edad, Departamento departamento){
-        return empresa.createEmpleado(nombre, idEmpleado, edad, departamento);
+    public boolean createGerente(Gerente gerente){
+        return empresa.createGerente(gerente);
     }
 
     @Override
-    public Empleado readEmpleado(String idEmpleado){
-        return empresa.readEmpleado(idEmpleado);
+    public Gerente readGerente(String codigo){
+        return empresa.readGerente(codigo);
     }
 
     @Override
-    public boolean updateEmpleado (String nombre, String idEmpleado, int edad, Departamento departamento){
-        return empresa.updateEmpleado(nombre, idEmpleado, edad, departamento);
+    public boolean updateGerente(Gerente gerente){
+        return empresa.updateGerente(gerente);
     }
 
     @Override
-    public boolean deleteEmpleado(String codigo){
-        return empresa.deleteEmpleado(codigo);
+    public boolean deleteGerente(String codigo){
+        return empresa.deleteGerente(codigo);
     }
 
     @Override
-    public ArrayList<Empleado> getEmpleados(){
-        return empresa.getEmpleados();
+    public ArrayList<Gerente> getGerentes() {
+        return empresa.getGerentes();
+    }
+
+    @Override
+    public boolean createTecnico(Tecnico tecnico){
+        return empresa.createTecnico(tecnico);
+    }
+
+    @Override
+    public Tecnico readTecnico(String codigo){
+        return empresa.readTecnico(codigo);
+    }
+
+    @Override
+    public boolean updateTecnico(Tecnico tecnico){
+        return empresa.updateTecnico(tecnico);
+    }
+
+    @Override
+    public boolean deleteTecnico(String codigo){
+        return empresa.deleteTecnico(codigo);
+    }
+
+    @Override
+    public ArrayList<Tecnico> getTecnicos() {
+        return empresa.getTecnicos();
     }
 
     private static void inicializarDatos() {
@@ -179,21 +201,20 @@ public class ModelFactory implements ICrudDepartamento, ICrudProyecto, ICrudEmpl
        empresa.agregarProyectos(proyecto3);
        empresa.agregarProyectos(proyecto4);
 
-       empresa.agregarEmpleados(gerente1);
-       empresa.agregarEmpleados(gerente2);
-       empresa.agregarEmpleados(gerente3);
-       empresa.agregarEmpleados(gerente4);
-       empresa.agregarEmpleados(tecnico1);
-       empresa.agregarEmpleados(tecnico2);
-       empresa.agregarEmpleados(tecnico3);
-       empresa.agregarEmpleados(tecnico4);
+       empresa.agregarGerente(gerente1);
+       empresa.agregarGerente(gerente2);
+       empresa.agregarGerente(gerente3);
+       empresa.agregarGerente(gerente4);
+       empresa.agregarTecnico(tecnico1);
+       empresa.agregarTecnico(tecnico2);
+       empresa.agregarTecnico(tecnico3);
+       empresa.agregarTecnico(tecnico4);
 
        departamento1.agregarEmpleado(tecnico2);
        departamento4.agregarEmpleado(gerente3);
 
        proyecto3.asignarEmpleado(tecnico2);
        proyecto3.asignarGerente(gerente4);
-
 
     }
 

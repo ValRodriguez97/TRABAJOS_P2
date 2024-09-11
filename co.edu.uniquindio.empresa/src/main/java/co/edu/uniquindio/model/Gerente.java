@@ -3,11 +3,12 @@ package co.edu.uniquindio.model;
 import co.edu.uniquindio.model.builder.EmpleadoBuilder;
 import co.edu.uniquindio.model.builder.GerenteBuilder;
 import co.edu.uniquindio.services.IContribuyente;
+import co.edu.uniquindio.services.IPrototypeGerente;
 
 /**
  * Clase Gerente que se encarga de gestionar los proyectos y equipos de empleados de la empresa
  */
-public class Gerente extends Empleado implements IContribuyente {
+public class Gerente extends Empleado implements IContribuyente, IPrototypeGerente {
 
     /**
      * Método Constructor de la clase Gerente
@@ -31,6 +32,17 @@ public class Gerente extends Empleado implements IContribuyente {
 
     public static GerenteBuilder gerenteBuilder(){
         return new GerenteBuilder();
+    }
+
+    @Override
+    public IPrototypeGerente clone (){
+        Gerente gerente = null;
+        try{
+            gerente = (Gerente) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return gerente;
     }
     /**
      * Método que devuelve la representación en cadena de la clase Gerente
