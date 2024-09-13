@@ -23,7 +23,6 @@ public class Tecnico extends Empleado implements IContribuyente, IPrototypeTecni
     public Tecnico(String nombre, String idEmpleado, int edad, Departamento departamentoAsociador, String especialidad) {
         super(nombre, idEmpleado, edad, departamentoAsociador);
         this.especialidad = especialidad;
-        assert especialidad != null;
     }
 
     /**

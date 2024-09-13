@@ -1,9 +1,7 @@
 package co.edu.uniquindio.model;
 
-import co.edu.uniquindio.services.ICrudDepartamento;
-import co.edu.uniquindio.services.ICrudGerente;
-import co.edu.uniquindio.services.ICrudProyecto;
-import co.edu.uniquindio.services.ICrudTecnico;
+import co.edu.uniquindio.model.builder.PresupuestoBuilder;
+import co.edu.uniquindio.services.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,12 +9,13 @@ import java.util.List;
 /**
  * Clase representante de una Empresa la cual gestiona proyectos, departamentos, gerentes y técnicos.
  */
-public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudGerente, ICrudTecnico {
+public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudGerente, ICrudTecnico, ICrudPresupuesto {
 
     private List<Proyecto> listProyectos;
     private List<Gerente> listGerentes;
     private List<Tecnico> listTecnicos;
     private List<Departamento> listDepartamentos;
+    private List<Presupuesto> listPresupuestos;
 
     /**
      * Constructor de la clase Empresa que inicializa las listas de proyectos, gerentes, tecnicos y departamentos
@@ -26,6 +25,7 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudGerente, 
         listGerentes = new ArrayList<>();
         listTecnicos = new ArrayList<>();
         listDepartamentos = new ArrayList<>();
+        listPresupuestos = new ArrayList<>();
     }
 
     /**
@@ -98,6 +98,14 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudGerente, 
      */
     public void setListTecnicos(List<Tecnico> listTecnicos) {
         this.listTecnicos = listTecnicos;
+    }
+
+    public List<Presupuesto> getListPresupuestos() {
+        return listPresupuestos;
+    }
+
+    public void setListPresupuestos(List<Presupuesto> listPresupuestos) {
+        this.listPresupuestos = listPresupuestos;
     }
 
     /**
@@ -360,7 +368,8 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudGerente, 
      */
     @Override
     public boolean createTecnico(String nombre, String idEmpleado, int edad, Departamento departamento, String especialidad) {
-        if (verificarTecnico(idEmpleado) == null) {
+       Tecnico tecnicoExistente = verificarTecnico(idEmpleado);
+        if (tecnicoExistente == null) {
             Tecnico newTecnico = Tecnico.tecnicoBuilder().nombre(nombre).idEmpleado(idEmpleado).edad(edad).departamento(departamento).especialidad(especialidad).build();
             agregarTecnico(newTecnico);
             return true;
@@ -438,6 +447,49 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudGerente, 
         listTecnicos.add(tecnico);
     }
 
+    public boolean createPresupuesto (String idPresupuesto, double valor, String estado, String descripcion){
+        Presupuesto presupuestoExistente = verificarPresupuesto(idPresupuesto);
+        if(presupuestoExistente == null){
+            Presupuesto newPresupuesto = Presupuesto.presupuestoBuilder().idPresupuesto(idPresupuesto).valor(valor).estado(estado).descripcion(descripcion).build();
+            agregarPresupuesto(newPresupuesto);
+            return true;
+        }
+        return false;
+    }
+
+    public Presupuesto readPresupuesto(String idPresupuesto){
+        return verificarPresupuesto(idPresupuesto);
+    }
+
+    public boolean updatePresupuesto(String idPresupuesto, double valor, String estado, String descripcion){
+        Presupuesto presupuestoExistente = null;
+        if(presupuestoExistente != null){
+            presupuestoExistente.setIdPresupuesto(idPresupuesto);
+            presupuestoExistente.setValor(valor);
+            presupuestoExistente.setEstado(estado);
+            presupuestoExistente.setDescripcion(descripcion);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean deletePresupuesto(String idPresupuesto){
+        Presupuesto presupuestoExistente = verificarPresupuesto(idPresupuesto);
+        if(presupuestoExistente != null){
+            listPresupuestos.remove(presupuestoExistente);
+            return true;
+        }
+        return false;
+    }
+
+    public ArrayList<Presupuesto> getPresupuestos(){
+        return  new ArrayList<>(listPresupuestos);
+    }
+
+    public void agregarPresupuesto(Presupuesto presupuesto){
+        listPresupuestos.add(presupuesto);
+    }
+
     /**
      * Método para verificar la existencia de un departamento en la empresa
      *
@@ -445,12 +497,14 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudGerente, 
      * @return Departamento existente
      */
     private Departamento verificarDepartamento(String codigo) {
+        Departamento departamentoExistente = null;
         for (Departamento departamento : listDepartamentos) {
             if (departamento.getCodigo().equals(codigo)) {
-                return departamento;
+                departamentoExistente = departamento;
+                break;
             }
         }
-        return null;
+        return departamentoExistente;
     }
 
     /**
@@ -460,12 +514,14 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudGerente, 
      * @return
      */
     private Proyecto verificarproyecto(String codigo) {
+       Proyecto proyectoExistente = null;
         for (Proyecto proyecto : listProyectos) {
             if (proyecto.getCodigo().equals(codigo)) {
-                proyecto = proyecto;
+                proyectoExistente = proyecto;
+                break;
             }
         }
-        return null;
+        return proyectoExistente;
     }
 
     /**
@@ -475,12 +531,14 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudGerente, 
      * @return
      */
     private Gerente verificarGerente(String idEmpleado) {
+        Gerente gerenteExistente = null;
         for (Gerente gerente : listGerentes) {
             if (gerente.getIdEmpleado().equals(idEmpleado)) {
-            return gerente;
+            gerenteExistente = gerente;
+            break;
             }
         }
-        return null;
+        return gerenteExistente;
     }
 
     /**
@@ -490,12 +548,31 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudGerente, 
      * @return
      */
     private Tecnico verificarTecnico(String idEmpleado) {
+        Tecnico tecnicoExistente = null;
         for (Tecnico tecnico : listTecnicos) {
-            if (tecnico.getIdEmpleado().equals(idEmpleado)  ) {
-                return tecnico;
+            if (tecnico != null) {
+                if (tecnico.getIdEmpleado().equals(idEmpleado)  ) {
+
+                    tecnicoExistente = tecnico;
+                    break;
+                }
             }
         }
-        return null;
+        return tecnicoExistente;
+    }
+
+    private Presupuesto verificarPresupuesto (String idPresupuesto){
+        Presupuesto presupuestoExistente = null;
+
+        for(Presupuesto presupuesto : listPresupuestos){
+            if(presupuesto != null){
+                if(presupuesto.getIdPresupuesto().equals(idPresupuesto)){
+                    presupuestoExistente = presupuesto;
+                    break;
+                }
+            }
+        }
+        return presupuestoExistente;
     }
 }
 

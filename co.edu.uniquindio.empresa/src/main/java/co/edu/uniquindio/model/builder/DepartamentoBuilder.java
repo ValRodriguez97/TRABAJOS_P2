@@ -4,6 +4,7 @@ import co.edu.uniquindio.model.Departamento;
 
 /**
  * Builder para crear instancias de la clase Departamenro
+ * Implementación del builder del objeto Departamento
  */
 public class DepartamentoBuilder {
     private String nombre;

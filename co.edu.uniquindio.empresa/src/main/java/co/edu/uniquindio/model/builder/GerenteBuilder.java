@@ -5,6 +5,7 @@ import co.edu.uniquindio.model.Gerente;
 
 /**
  * Builder para crear instancias de la clase Gerente
+ * Implementación del builder para el objeto Gerente
  */
 public class GerenteBuilder extends EmpleadoBuilder {
 

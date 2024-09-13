@@ -5,7 +5,7 @@ import co.edu.uniquindio.services.*;
 
 import java.util.ArrayList;
 
-public class ModelFactory implements ICrudDepartamento, ICrudProyecto, ICrudGerente, ICrudTecnico {
+public class ModelFactory implements ICrudDepartamento, ICrudProyecto, ICrudGerente, ICrudTecnico, ICrudPresupuesto {
     private static ModelFactory instance;
     private static Empresa empresa;
 
@@ -13,6 +13,11 @@ public class ModelFactory implements ICrudDepartamento, ICrudProyecto, ICrudGere
         inicializarDatos();
     }
 
+    /**
+     * Aplicación del patron singleton en la clase Modelfactory
+     *
+     * @return Unica instancia
+     */
     public static ModelFactory getInstance() {
         if (instance == null) {
             instance = new ModelFactory();
@@ -118,6 +123,31 @@ public class ModelFactory implements ICrudDepartamento, ICrudProyecto, ICrudGere
     @Override
     public ArrayList<Tecnico> getTecnicos() {
         return empresa.getTecnicos();
+    }
+
+    @Override
+    public boolean createPresupuesto(String idPresupuesto, double valor, String estado, String descripcion){
+        return empresa.createPresupuesto(idPresupuesto, valor, estado, descripcion);
+    }
+
+    @Override
+    public Presupuesto readPresupuesto(String idPresupuesto){
+        return empresa.readPresupuesto(idPresupuesto);
+    }
+
+    @Override
+    public boolean updatePresupuesto(String idPresupuesto, double valor, String estado, String descripcion){
+        return empresa.updatePresupuesto(idPresupuesto, valor, estado, descripcion);
+    }
+
+    @Override
+    public boolean deletePresupuesto(String idPresupuesto){
+        return empresa.deletePresupuesto(idPresupuesto);
+    }
+
+    @Override
+    public ArrayList<Presupuesto> getPresupuestos(){
+        return empresa.getPresupuestos();
     }
 
     private static void inicializarDatos() {

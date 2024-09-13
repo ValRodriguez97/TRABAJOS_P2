@@ -5,6 +5,7 @@ import co.edu.uniquindio.model.Empleado;
 
 /**
  * Builder para crear instancias de la clase Empleado
+ * Implementacion del builder para el objeto Empresa
  *
  * @param <T> Tipo de builder
  */

@@ -5,6 +5,7 @@ import co.edu.uniquindio.model.Tecnico;
 
 /**
  * Builder para crear instancias de la clase Tecnico
+ * Implementacion del builder para el objeto Tecnico
  */
 public class TecnicoBuilder extends EmpleadoBuilder {
     private String especialidad;

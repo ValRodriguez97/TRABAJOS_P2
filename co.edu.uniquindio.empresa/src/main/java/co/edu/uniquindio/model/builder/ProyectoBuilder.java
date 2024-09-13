@@ -4,6 +4,7 @@ import co.edu.uniquindio.model.Proyecto;
 
 /**
  * Builder para crear instancias de la clase Proyecto
+ * Implementacion del builder para el objeto Proyecto
  */
 public class ProyectoBuilder {
     private String nombre;

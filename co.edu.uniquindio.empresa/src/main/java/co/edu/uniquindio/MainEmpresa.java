@@ -10,7 +10,8 @@ public class MainEmpresa {
     public static void main(String[] args) {
         ModelFactory modelFactory = ModelFactory.getInstance();
         crudDepartamento(modelFactory);
-        crudTecnico(modelFactory);
+        //crudTecnico(modelFactory);
+        crudPresupuesto(modelFactory);
     }
 
     /**
@@ -48,7 +49,7 @@ public class MainEmpresa {
      * Test del crud del tecnico
      * @param modelFactory
      */
-    public static void crudTecnico(ModelFactory modelFactory){
+  /*  public static void crudTecnico(ModelFactory modelFactory){
         createTecnico(modelFactory);
         deleteTecnico(modelFactory);
         readTecnico(modelFactory);
@@ -56,7 +57,7 @@ public class MainEmpresa {
     }
 
     private static void createTecnico(ModelFactory modelFactory){
-        boolean centinela = modelFactory.createTecnico("Jamir", "4", 21, new Departamento("Sistemas", "0000"), "Artes marciales");
+        boolean centinela = modelFactory.createTecnico("Jamir", "vuc", 21, new Departamento("Sistemas", "0000"), "Artes marciales");
         System.out.println("El resultado fue " + centinela);
     }
 
@@ -73,5 +74,36 @@ public class MainEmpresa {
     private static void updateTecnico(ModelFactory modelFactory){
         Boolean centinela = modelFactory.updateTecnico("Jose Jose", "3", 20, new Departamento("Electricidad", "123456789"), "Cocinar");
         System.out.println("El resultado fue " + centinela);
+    }*/
+
+    /**
+     * Test del crud del apartamento
+     * @param modelFactory
+     */
+    public static void crudPresupuesto(ModelFactory modelFactory) {
+        createPresupuesto(modelFactory);
+        deletePresupuesto(modelFactory);
+        readPresupuesto(modelFactory);
+        updatePresupuesto(modelFactory);
     }
+    private static void createPresupuesto(ModelFactory modelFactory) {
+        Boolean presupuesto = modelFactory.createPresupuesto("123", 200000, "disponible", "Cuenta para donar a funaciones");
+        System.out.println("El resultado fue " + presupuesto);
+    }
+
+    private static void deletePresupuesto(ModelFactory modelFactory) {
+        boolean eliminado = modelFactory.deletePresupuesto("123");
+        System.out.println("El resultado fue " + eliminado);
+    }
+
+    private static void readPresupuesto(ModelFactory modelFactory) {
+        Presupuesto presupuesto = modelFactory.readPresupuesto("123");
+        System.out.println("El resultado fue " +presupuesto);
+    }
+
+    private static void updatePresupuesto(ModelFactory modelFactory) {
+        Presupuesto presupuesto = modelFactory.readPresupuesto("123");
+        System.out.println("El resultado fue " + presupuesto);
+    }
+
 }

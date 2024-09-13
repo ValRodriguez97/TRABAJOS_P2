@@ -1,6 +1,7 @@
 package co.edu.uniquindio.model;
 
 import co.edu.uniquindio.model.builder.ProyectoBuilder;
+import co.edu.uniquindio.services.IAsignable;
 import co.edu.uniquindio.services.IPrototypeProyecto;
 
 import java.util.ArrayList;
@@ -9,10 +10,11 @@ import java.util.List;
 /**
  * Clase Proyecto perteneciente a la empresa
  */
-public class Proyecto implements IPrototypeProyecto {
+public class Proyecto implements IPrototypeProyecto, IAsignable {
     private String nombre;
     private String codigo;
     private List<Empleado> empleadosAsignados;
+    private List<Departamento> departamentosAsignados;;
 
     /**
      * Metodo constructor de la clase proyecto
@@ -80,6 +82,14 @@ public class Proyecto implements IPrototypeProyecto {
         this.empleadosAsignados = empleadosAsignados;
     }
 
+    public List<Departamento>ngetDepartamentosAsignados(){
+        return departamentosAsignados;
+    }
+
+    public void setDepartamentosAsignados(List<Departamento> departamentosAsignados) {
+        this.departamentosAsignados = departamentosAsignados;
+    }
+
     /**
      * Metodo para asignar un gerente a la lista de empleados asignados
      *
@@ -123,6 +133,9 @@ public class Proyecto implements IPrototypeProyecto {
         return proyecto;
     }
 
+    public void asignarDepartamento (Departamento departamento){
+        departamentosAsignados.add(departamento);
+    }
     /**
      * Metodo toString de la clase proyecto(Metodo para obtener el objeto como una cadena)
      * @return String

@@ -1,0 +1,39 @@
+a)
+De acuerdo a la aplicación de los principios SOLID se implementaron varios de ellos, por ejemplo la segregación de interfaces donde se puede
+ver evidenciada en el package services en donde se encuentran interfaces como por ejemplo el crud, el patron prototype, y demas.
+
+Algunas clases implementan el principio de responsabilidad unica, un ejemplo es la clase gerente.
+
+A su vez el codigo impelmenta el principio Open/Closed.
+
+b)
+El patron singleton se encuentra en el objeto ModelFactory del package factory a partir de la linea 21
+
+c)
+El patron builder se encuentra en el package builders dentro de package model
+
+d)
+El método inicializar asociado al singleto se encuentra en el objeto o clase MainEmpresa en la linea 11, a su vez en ModelFactory hay un metodo de inicializar datos en la linea 12
+
+e)
+La estructura de comunicacion se puede observar en los cruds, la clase principal empresa, el model factory y la clase MainEmpresa ya que todas estan enlazadas y se comunican entre si
+Un ejemplo es el crud que tiene su parte logica en la clase empresa, es llamado desde la clase modelFactory y se implementa en la clase MainEmpresa
+
+f)
+Las interfaces se encuentran en el package services
+
+g)
+Se implemento el model segun el diagrama en clase y a su vez se modifico para sus nuevos requerimientos
+
+2.2
+
+b.
+El crud de presupuesto esta en el packcage services, a su vez el objeto esta en el package model y su respectivo builder en el package builders
+
+c)
+Se integro el nuevo objeto tanto en la clase empresa, se realizo el builder y se implemento en el modelFactory
+
+d)
+El patron builder de presupuesto se encuentra en el package builders
+
+2.3

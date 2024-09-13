@@ -16,9 +16,6 @@ public abstract class Empleado {
         this.idEmpleado = idEmpleado;
         this.edad = edad;
         this.departamentoAsociado = departamentoAsociado;
-        assert nombre != null && !nombre.isEmpty();
-        assert idEmpleado != null && !idEmpleado.isEmpty();
-        assert departamentoAsociado != null;
     }
 
     /**
