@@ -15,83 +15,108 @@ public class Proyecto implements IPrototypeProyecto {
     private List<Empleado> empleadosAsignados;
 
     /**
-     * Método Constructor de la clase Proyecto
+     * Metodo constructor de la clase proyecto
      *
-     * @param nombre
-     * @param codigo
+     * @param nombre Nombre del proyecto
+     * @param codigo Codigo del proyecto
      */
     public Proyecto(String nombre, String codigo) {
         this.nombre = nombre;
         this.codigo = codigo;
         this.empleadosAsignados = new ArrayList<>();
-        assert nombre != null && !nombre.isEmpty();
-        assert codigo != null && !codigo.isEmpty();
-        assert empleadosAsignados != null && !empleadosAsignados.isEmpty();
     }
 
     /**
-     * Método para obtener el nombre del proyecto
+     * Metodo para obtener el nombre del proyecto
      *
-     * @return nombre del proyecto
+     * @return nombre
      */
     public String getNombre() {
         return nombre;
     }
 
     /**
-     * Método para obtener el código del proyecto
+     * Metodo para modificar el nombre del proyecto
      *
-     * @return código del proyecto
+     * @param nombre Nombre del proyecto
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+     * Metodo para obtener el codigo del proyecto
+     *
+     * @return codigo
      */
     public String getCodigo() {
         return codigo;
     }
 
+    /**
+     * Metodo para modificar el codigo del proyecto
+     *
+     * @param codigo Codigo del proyecto
+     */
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
 
     /**
-     * Método para obtener la lista de empleados asignados al proyecto
+     * Metodo para obtener la lista de empleados asignados al proyecto
      *
-     * @return lista de empleados asignados
+     * @return empleadosAsignados
      */
     public List<Empleado> getEmpleadosAsignados() {
         return empleadosAsignados;
     }
 
     /**
-     * Método para establecer la lista de empleados asignados de un proyecto
+     * Metodo para modificar la lista de empleados asignados
      *
-     * @param empleadosAsignados nuevos empleados asignados
+     * @param empleadosAsignados Empleados asignados al proyecto
      */
     public void setEmpleadosAsignados(List<Empleado> empleadosAsignados) {
         this.empleadosAsignados = empleadosAsignados;
     }
 
     /**
-     * Método para asignar un gerente al proyecto
+     * Metodo para asignar un gerente a la lista de empleados asignados
      *
-     * @param gerente a asignar
+     * @param gerente Gerente a asignar
      */
     public void asignarGerente(Gerente gerente) {
         empleadosAsignados.add(gerente);
     }
 
     /**
-     * Método para asignar un empleado al proyecto
+     * Metodo para asignar un tecnico a la lista de empleados asignados
      *
-     * @param tecnico a asignar
+     * @param tecnico Tecnico a asignar
      */
-    public void asignarEmpleado(Tecnico tecnico) {
+    public void asignarTecnico(Tecnico tecnico) {
         empleadosAsignados.add(tecnico);
     }
 
+    /**
+     * Crear una instancia del constructor del proyecto(Aplicacion del builder)
+     *
+     * @return ProyectoBuilder
+     */
     public static ProyectoBuilder proyectobuilder() {
         return new ProyectoBuilder();
     }
+
+    /**
+     * Implementacion del patron creacional prototype(Metodo para clonar un proyecto)
+     *
+     * @return proyecto
+     */
     @Override
-    public IPrototypeProyecto clone(){
+    public IPrototypeProyecto clone() {
         Proyecto proyecto = null;
         try {
-            proyecto = (Proyecto)  super.clone();
+            proyecto = (Proyecto) super.clone();
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
@@ -99,9 +124,8 @@ public class Proyecto implements IPrototypeProyecto {
     }
 
     /**
-     * Método que devuleve una representación en cadena de la clase Proyecto
-     *
-     * @return representación en cadena de la clase Proyecto
+     * Metodo toString de la clase proyecto(Metodo para obtener el objeto como una cadena)
+     * @return String
      */
     @Override
     public String toString() {
@@ -109,13 +133,5 @@ public class Proyecto implements IPrototypeProyecto {
                 + "Nombre: " + nombre + "\n"
                 + "Codigo: " + codigo + "\n"
                 + "Empleados: " + empleadosAsignados + "\n";
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
     }
 }

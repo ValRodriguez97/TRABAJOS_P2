@@ -12,6 +12,14 @@ public class Tecnico extends Empleado implements IContribuyente, IPrototypeTecni
     private EmpleadoBuilder empleadoBuilder;
     private String especialidad;
 
+    /**
+     * Constructor de la clase Tecnico
+     * @param nombre Nombre del tecnico
+     * @param idEmpleado IdEmpleado del tecnico
+     * @param edad Edad del tecnico
+     * @param departamentoAsociador Departamento asociado al tecnico
+     * @param especialidad Especialidad del tecnico
+     */
     public Tecnico(String nombre, String idEmpleado, int edad, Departamento departamentoAsociador, String especialidad) {
         super(nombre, idEmpleado, edad, departamentoAsociador);
         this.especialidad = especialidad;
@@ -19,45 +27,61 @@ public class Tecnico extends Empleado implements IContribuyente, IPrototypeTecni
     }
 
     /**
-     * Implementación del método de la interface Contribuyente
+     * Crear una instancia del constructor del tecnico(Aplicacion del builder)
+     * @return TecnicoBuilder
+     */
+    public static TecnicoBuilder tecnicoBuilder() {
+        return new TecnicoBuilder();
+    }
+
+    /**
+     * Implementacion del metodo contribuir
      */
     @Override
     public void contribuir() {
         System.out.println(getNombre() + " está trabajando en tareas técnicas.");
     }
 
-    public static TecnicoBuilder tecnicoBuilder (){
-        return new TecnicoBuilder();
-    }
-
+    /**
+     * Metodo para clonar un tecnico(Implementacion del prototype)
+     *
+     * @return Copia del objeto tecnico
+     */
     @Override
-    public IPrototypeTecnico clone(){
+    public IPrototypeTecnico clone() {
         Tecnico tecnico = null;
-        try{
-            tecnico = (Tecnico)  super.clone();
+        try {
+            tecnico = (Tecnico) super.clone();
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
         return tecnico;
     }
 
-    public String getEspecialidad(){
+    /**
+     * Metodo para obtener la especialida del tecnico
+     *
+     * @return especialidad
+     */
+    public String getEspecialidad() {
         return especialidad;
     }
 
-    public void setEspecialidad(String especialidad){
+    /**
+     * Metodo para modificar la especialidad del tecnico
+     *
+     * @param especialidad Especialidad del tecnico
+     */
+    public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
     }
+
     /**
-     * Método que devuelte la representación en cadena de la clase Tecnico
-     *
-     * @return representación en cadena de la clase Tecnico
+     * Metodo toString para obtener el objeto como una cadena
+     * @return String
      */
     @Override
     public String toString() {
-        return "Tecnico \n"
-                + "Nombre: " + getNombre() + "\n"
-                + "IdEmpleado: " + getIdEmpleado() + "\n"
-                + "Especialidad: " + especialidad + "\n";
+        return "Tecnico \n" + "Nombre: " + getNombre() + "\n" + "IdEmpleado: " + getIdEmpleado() + "\n" + "Especialidad: " + especialidad + "\n";
     }
 }

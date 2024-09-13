@@ -1,6 +1,5 @@
 package co.edu.uniquindio.model;
 
-import co.edu.uniquindio.model.builder.EmpleadoBuilder;
 import co.edu.uniquindio.model.builder.GerenteBuilder;
 import co.edu.uniquindio.services.IContribuyente;
 import co.edu.uniquindio.services.IPrototypeGerente;
@@ -13,13 +12,22 @@ public class Gerente extends Empleado implements IContribuyente, IPrototypeGeren
     /**
      * Método Constructor de la clase Gerente
      *
-     * @param nombre
-     * @param idEmpleado
-     * @param edad
-     * @param departamentoAsociado
+     * @param nombre Nombre del gerente
+     * @param idEmpleado IdEmpleado del gerente
+     * @param edad Edad del gerente
+     * @param departamentoAsociado Departamento asociado del gerente
      */
     public Gerente(String nombre, String idEmpleado, int edad, Departamento departamentoAsociado) {
         super(nombre, idEmpleado, edad, departamentoAsociado);
+    }
+
+    /**
+     * crear una instancia del constructor del gerente(Aplicaion del builder)
+     *
+     * @return GerenteBuilder
+     */
+    public static GerenteBuilder gerenteBuilder() {
+        return new GerenteBuilder();
     }
 
     /**
@@ -30,27 +38,29 @@ public class Gerente extends Empleado implements IContribuyente, IPrototypeGeren
         System.out.println(getNombre() + " está gestionando el proyecto.");
     }
 
-    public static GerenteBuilder gerenteBuilder(){
-        return new GerenteBuilder();
-    }
-
+    /**
+     * Implementacion del patron creacional prototype del gerente(Metodo para clonar)
+     *
+     * @return gerente
+     */
     @Override
-    public IPrototypeGerente clone (){
+    public IPrototypeGerente clone() {
         Gerente gerente = null;
-        try{
+        try {
             gerente = (Gerente) super.clone();
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
         return gerente;
     }
+
     /**
-     * Método que devuelve la representación en cadena de la clase Gerente
+     * Metodo toString para obtener el objeto como una cadena
      *
-     * @return representación en cadena de la clase Gerente
+     * @return String
      */
     @Override
-    public String toString (){
+    public String toString() {
         return "Gerente \n" + super.toString();
     }
 }

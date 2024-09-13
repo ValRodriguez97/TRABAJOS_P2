@@ -2,24 +2,19 @@ package co.edu.uniquindio.model.builder;
 
 import co.edu.uniquindio.model.Proyecto;
 
+/**
+ * Builder para crear instancias de la clase Proyecto
+ */
 public class ProyectoBuilder {
     private String nombre;
     private String codigo;
 
-    public String nombre() {
-        return nombre;
-    }
-
-    public String codigo() {
-        return codigo;
-    }
-
-    public ProyectoBuilder setNombre(String nombre) {
+    public ProyectoBuilder nombre(String nombre) {
         this.nombre = nombre;
         return this;
     }
 
-    public ProyectoBuilder setCodigo(String codigo) {
+    public ProyectoBuilder codigo(String codigo) {
         this.codigo = codigo;
         return this;
     }

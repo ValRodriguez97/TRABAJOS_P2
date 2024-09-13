@@ -11,14 +11,6 @@ public abstract class Empleado {
     private int edad;
     private Departamento departamentoAsociado;
 
-    /**
-     * Método Constructor de la clase Empleado
-     *
-     * @param nombre
-     * @param idEmpleado
-     * @param edad
-     * @param departamentoAsociado
-     */
     public Empleado(String nombre, String idEmpleado, int edad, Departamento departamentoAsociado) {
         this.nombre = nombre;
         this.idEmpleado = idEmpleado;
@@ -30,17 +22,15 @@ public abstract class Empleado {
     }
 
     /**
-     * Método para obtener el nombre del empleado
-     *
-     * @return nombre del empleado
+     * Metodo para obtener el nombre del empleado
+     * @return nombre
      */
     public String getNombre() {
         return nombre;
     }
 
     /**
-     * Método para obtener la identificacion del empleado
-     *
+     * Metodo para obtener el id del emppleado
      * @return idEmpleado
      */
     public String getIdEmpleado() {
@@ -48,11 +38,10 @@ public abstract class Empleado {
     }
 
     /**
-     * Método para obtener el departamento asociado del empleado
-     *
-     * @return departamento asociado del empleado
+     * Metodo para obtener el departamento del empleado
+     * @return departamentoAsociado
      */
-    public Departamento getDepartamentoAsociado () {
+    public Departamento getDepartamentoAsociado() {
         return departamentoAsociado;
     }
 
@@ -65,40 +54,60 @@ public abstract class Empleado {
     }
 
     /**
-     * Crear una instancia del constructor del objeto(Aplicacion del builder)
+     * Crear una instancia del constructor del empleado(Aplicacion del builder)
+     * @return Empleado Builder
      */
-    public static EmpleadoBuilder empleadobuilder(){
+    public static EmpleadoBuilder empleadobuilder() {
         return new EmpleadoBuilder();
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
+    /**
+     * Metodo para modificar el id del empleado
+     * @param idEmpleado
+     */
     public void setIdEmpleado(String idEmpleado) {
         this.idEmpleado = idEmpleado;
     }
 
+    /**
+     * Metodo para modificar la edad del empleado
+     * @param edad
+     */
     public void setEdad(int edad) {
         this.edad = edad;
     }
 
+    /**
+     * Metodo para modificar el departamento asociado del empleado
+     * @param departamentoAsociado
+     */
     public void setDepartamentoAsociado(Departamento departamentoAsociado) {
         this.departamentoAsociado = departamentoAsociado;
     }
 
     /**
-     * Método que devuelva la representación en cadema de la clase Empleado
-     *
-     * @return representación en cadena de la clase Empleado
+     * Metodo abstracto contribuir
      */
-   @Override
-    public String toString (){
+    public abstract void contribuir();
+
+    /**
+     * Metodo para modificar el nombre del empleado
+     * @param nombre
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+     * Metodo toString para mostrar el objeto como una cadena
+     * @return String
+     */
+    @Override
+    public String toString() {
         return "Empleado \n"
                 + "Nombre: " + nombre + "\n"
                 + "IdEmpleado: " + idEmpleado + "\n"
                 + "Departamento: " + departamentoAsociado + "\n";
     }
 
-    public abstract void contribuir();
 }
