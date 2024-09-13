@@ -6,9 +6,9 @@ import java.util.ArrayList;
 
 public interface ICrudProyecto {
 
-    public boolean createProyecto(Proyecto proyecto);
+    public boolean createProyecto(String nombre, String codigo);
     public Proyecto readProyecto(String codigo);
-    public boolean updateProyecto(Proyecto proyecto);
+    public boolean updateProyecto(String nombre, String codigo);
     public boolean deleteProyecto(String codigo);
     public ArrayList<Proyecto> getProyectos();
 }

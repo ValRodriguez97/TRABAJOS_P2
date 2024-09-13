@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="82d452ae-292c-4618-8b96-12adb901348f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/co.edu.uniquindio.empresa/src/main/java/co/edu/uniquindio/MainEmpresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/co.edu.uniquindio.empresa/src/main/java/co/edu/uniquindio/MainEmpresa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/co.edu.uniquindio.empresa/src/main/java/co/edu/uniquindio/factory/ModelFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/co.edu.uniquindio.empresa/src/main/java/co/edu/uniquindio/factory/ModelFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/co.edu.uniquindio.empresa/src/main/java/co/edu/uniquindio/model/Empresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/co.edu.uniquindio.empresa/src/main/java/co/edu/uniquindio/model/Empresa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/co.edu.uniquindio.empresa/src/main/java/co/edu/uniquindio/services/ICrudDepartamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/co.edu.uniquindio.empresa/src/main/java/co/edu/uniquindio/services/ICrudDepartamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/co.edu.uniquindio.empresa/src/main/java/co/edu/uniquindio/services/ICrudGerente.java" beforeDir="false" afterPath="$PROJECT_DIR$/co.edu.uniquindio.empresa/src/main/java/co/edu/uniquindio/services/ICrudGerente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/co.edu.uniquindio.empresa/src/main/java/co/edu/uniquindio/services/ICrudProyecto.java" beforeDir="false" afterPath="$PROJECT_DIR$/co.edu.uniquindio.empresa/src/main/java/co/edu/uniquindio/services/ICrudProyecto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/co.edu.uniquindio.empresa/src/main/java/co/edu/uniquindio/services/ICrudTecnico.java" beforeDir="false" afterPath="$PROJECT_DIR$/co.edu.uniquindio.empresa/src/main/java/co/edu/uniquindio/services/ICrudTecnico.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;LawrncD&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ValRodriguez97/TRABAJOS_P2.git&quot;,
+    &quot;accountId&quot;: &quot;63796714-ffdc-4bc4-9d36-57c89c080170&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2lzVUCxDv8XILyMRa2Y1XUhQWOq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.MainEmpresa.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;VersionV&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="MainEmpresa" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="21" />
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.MainEmpresa" />
+      <module name="co.edu.uniquindio.empresa" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.edu.uniquindio.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MainEmpresa" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.300" />
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.300" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="82d452ae-292c-4618-8b96-12adb901348f" name="Changes" comment="" />
+      <created>1726182907258</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1726182907258</updated>
+      <workItem from="1726183395005" duration="1890000" />
+      <workItem from="1726185296530" duration="105000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

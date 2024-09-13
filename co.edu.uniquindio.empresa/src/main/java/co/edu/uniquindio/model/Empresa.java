@@ -76,10 +76,10 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudGerente, 
 
 
     @Override
-    public boolean createDepartamento(Departamento departamento){
-        Departamento departamentoExistente = verificarDepartamento(departamento.getCodigo());
+    public boolean createDepartamento(String nombre, String codigo){
+        Departamento departamentoExistente = verificarDepartamento(codigo);
         if(departamentoExistente == null){
-            Departamento newDepartamento = Departamento.departamentoBuilder().setNombre(departamento.getNombre()).setCodigo(departamento.getCodigo()).build();
+            Departamento newDepartamento = Departamento.departamentoBuilder().setNombre(nombre).setCodigo(codigo).build();
             agregarDepartamentos(newDepartamento);
             return true;
         }
@@ -87,11 +87,11 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudGerente, 
     }
 
     @Override
-    public boolean updateDepartamento(Departamento departamento){
-        Departamento departamentoExistente = verificarDepartamento(departamento.getCodigo());
+    public boolean updateDepartamento(String nombre, String codigo){
+        Departamento departamentoExistente = verificarDepartamento(codigo);
         if(departamentoExistente == null){
-            departamentoExistente.setNombre(departamento.getNombre());
-            departamentoExistente.setCodigo(departamento.getCodigo());
+            departamentoExistente.setNombre(nombre);
+            departamentoExistente.setCodigo(codigo);
             return true;
         }
         return false;
@@ -131,10 +131,10 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudGerente, 
     }
 
     @Override
-    public boolean createProyecto(Proyecto proyecto){
-        Proyecto proyectoExistente = verificarproyecto(proyecto.getCodigo());
+    public boolean createProyecto(String nombre, String codigo){
+        Proyecto proyectoExistente = verificarproyecto(codigo);
         if(proyectoExistente == null){
-            Proyecto newProyecto = Proyecto.proyectobuilder().setNombre(proyecto.getNombre()).setCodigo(proyecto.getCodigo()).build();
+            Proyecto newProyecto = Proyecto.proyectobuilder().setNombre(nombre).setCodigo(codigo).build();
             agregarProyectos(newProyecto);
             return true;
         }
@@ -142,11 +142,11 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudGerente, 
     }
 
     @Override
-    public boolean updateProyecto(Proyecto proyecto){
-        Proyecto proyectoExistente = verificarproyecto(proyecto.getCodigo());
+    public boolean updateProyecto(String nombre, String codigo){
+        Proyecto proyectoExistente = verificarproyecto(codigo);
         if(proyectoExistente == null){
-            proyectoExistente.setNombre(proyecto.getNombre());
-            proyectoExistente.setCodigo(proyecto.getCodigo());
+            proyectoExistente.setNombre(nombre);
+            proyectoExistente.setCodigo(codigo);
             return true;
         }
         return false;
@@ -184,10 +184,10 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudGerente, 
     }
 
     @Override
-    public boolean createGerente (Gerente gerente){
+    public boolean createGerente (String nombre, String idEmpleado, int edad, Departamento departamento){
         Gerente gerenteExistente  = null;
         if(gerenteExistente == null){
-            Gerente newGerente = Gerente.gerenteBuilder().setNombre(gerente.getNombre()). setIdEmpleado(gerente.getIdEmpleado()). setEdad(gerente.getEdad()). setDepartamento(gerente.getDepartamentoAsociado()).build();
+            Gerente newGerente = Gerente.gerenteBuilder().setNombre(nombre). setIdEmpleado(idEmpleado). setEdad(edad). setDepartamento(departamento).build();
             agregarGerente(newGerente);
             return true;
         }
@@ -195,13 +195,13 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudGerente, 
     }
 
     @Override
-    public boolean updateGerente(Gerente gerente){
+    public boolean updateGerente(String nombre, String idEmpleado, int edad, Departamento departamento){
         Gerente gerenteExistente = null;
         if(gerenteExistente == null){
-            gerenteExistente.setNombre(gerente.getNombre());
-            gerenteExistente.setIdEmpleado(gerente.getIdEmpleado());
-            gerenteExistente.setEdad(gerente.getEdad());
-            gerenteExistente.setDepartamentoAsociado(gerente.getDepartamentoAsociado());
+            gerenteExistente.setNombre(nombre);
+            gerenteExistente.setIdEmpleado(idEmpleado);
+            gerenteExistente.setEdad(edad);
+            gerenteExistente.setDepartamentoAsociado(departamento);
             return true;
         }
         return false;
@@ -238,11 +238,11 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudGerente, 
         return gerenteExistente;
     }
 
-    @Override
-    public boolean createTecnico (Tecnico tecnico){
+   @Override
+    public boolean createTecnico (String nombre, String idEmpleado, int edad, Departamento departamento, String especialidad){
         Tecnico tecnicoExistente = null;
         if(tecnicoExistente == null){
-            Tecnico newTecnico = Tecnico.tecnicoBuilder().setNombre(tecnico.getNombre()).setIdEmpleado(tecnico.getIdEmpleado()).setEdad(tecnico.getEdad()). setDepartamento(tecnico.getDepartamentoAsociado()).build();
+            Tecnico newTecnico = Tecnico.tecnicoBuilder().setNombre(nombre).setIdEmpleado(idEmpleado).setEdad(edad). setDepartamento(departamento).setEspecialidad(especialidad).build();
             agregarTecnico(newTecnico);
             return true;
         }
@@ -250,13 +250,14 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudGerente, 
     }
 
     @Override
-    public boolean updateTecnico(Tecnico tecnico){
+    public boolean updateTecnico(String nombre, String idEmpleado, int edad, Departamento departamento, String especialidad){
         Tecnico tecnicoExistente = null;
         if(tecnicoExistente == null){
-            tecnicoExistente.setNombre(tecnico.getNombre());
-            tecnicoExistente.setIdEmpleado(tecnico.getIdEmpleado());
-            tecnicoExistente.setEdad(tecnico.getEdad());
-            tecnicoExistente.setDepartamentoAsociado(tecnico.getDepartamentoAsociado());
+            tecnicoExistente.setNombre(nombre);
+            tecnicoExistente.setIdEmpleado(idEmpleado);
+            tecnicoExistente.setEdad(edad);
+            tecnicoExistente.setDepartamentoAsociado(departamento);
+            tecnicoExistente.setEspecialidad(especialidad);
             return true;
         }
         return false;

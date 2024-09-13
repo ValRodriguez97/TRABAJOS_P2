@@ -21,8 +21,8 @@ public class ModelFactory implements ICrudDepartamento, ICrudProyecto, ICrudGere
     }
 
     @Override
-    public boolean createDepartamento(Departamento departamento){
-        return empresa.createDepartamento(departamento);
+    public boolean createDepartamento(String nombre, String codigo){
+        return empresa.createDepartamento(nombre, codigo);
     }
 
     @Override
@@ -31,8 +31,8 @@ public class ModelFactory implements ICrudDepartamento, ICrudProyecto, ICrudGere
     }
 
     @Override
-    public boolean updateDepartamento (Departamento departamento){
-        return empresa.updateDepartamento(departamento);
+    public boolean updateDepartamento (String nombre, String codigo){
+        return empresa.updateDepartamento(nombre, codigo);
     }
 
     @Override
@@ -46,8 +46,8 @@ public class ModelFactory implements ICrudDepartamento, ICrudProyecto, ICrudGere
     }
 
     @Override
-    public boolean createProyecto(Proyecto proyecto){
-        return empresa.createProyecto(proyecto);
+    public boolean createProyecto(String nombre, String codigo){
+        return empresa.createProyecto(nombre, codigo);
     }
 
     @Override
@@ -56,8 +56,8 @@ public class ModelFactory implements ICrudDepartamento, ICrudProyecto, ICrudGere
     }
 
     @Override
-    public boolean updateProyecto(Proyecto proyecto){
-        return empresa.updateProyecto(proyecto);
+    public boolean updateProyecto(String nombre, String codigo){
+        return empresa.updateProyecto(nombre, codigo);
     }
 
     @Override
@@ -70,8 +70,8 @@ public class ModelFactory implements ICrudDepartamento, ICrudProyecto, ICrudGere
         return empresa.getProyectos();
     }
     @Override
-    public boolean createGerente(Gerente gerente){
-        return empresa.createGerente(gerente);
+    public boolean createGerente(String nombre, String idEmpleado, int edad, Departamento departamento){
+        return empresa.createGerente(nombre, idEmpleado, edad, departamento);
     }
 
     @Override
@@ -80,8 +80,8 @@ public class ModelFactory implements ICrudDepartamento, ICrudProyecto, ICrudGere
     }
 
     @Override
-    public boolean updateGerente(Gerente gerente){
-        return empresa.updateGerente(gerente);
+    public boolean updateGerente(String nombre, String idEmpleado, int edad, Departamento departamento){
+        return empresa.updateGerente(nombre, idEmpleado, edad, departamento);
     }
 
     @Override
@@ -95,8 +95,8 @@ public class ModelFactory implements ICrudDepartamento, ICrudProyecto, ICrudGere
     }
 
     @Override
-    public boolean createTecnico(Tecnico tecnico){
-        return empresa.createTecnico(tecnico);
+    public boolean createTecnico(String nombre, String idEmpleado, int edad, Departamento departamento, String especialidad){
+        return empresa.createTecnico(nombre, idEmpleado, edad, departamento, especialidad);
     }
 
     @Override
@@ -105,8 +105,8 @@ public class ModelFactory implements ICrudDepartamento, ICrudProyecto, ICrudGere
     }
 
     @Override
-    public boolean updateTecnico(Tecnico tecnico){
-        return empresa.updateTecnico(tecnico);
+    public boolean updateTecnico(String nombre, String idEmpleado, int edad, Departamento departamento, String especialidad){
+        return empresa.updateTecnico(nombre, idEmpleado, edad, departamento, especialidad);
     }
 
     @Override
