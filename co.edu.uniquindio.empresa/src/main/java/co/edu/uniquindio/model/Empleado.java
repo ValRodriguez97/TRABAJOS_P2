@@ -35,7 +35,7 @@ public abstract class Empleado {
      */
     public String getIdEmpleado() {
         return idEmpleado;
-    }
+    } 
 
     /**
      * Metodo para obtener el departamento del empleado
