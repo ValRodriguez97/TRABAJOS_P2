@@ -491,7 +491,7 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudGerente, 
      */
     private Tecnico verificarTecnico(String idEmpleado) {
         for (Tecnico tecnico : listTecnicos) {
-            if (tecnico.getIdEmpleado().equals(idEmpleado)) {
+            if (tecnico.getIdEmpleado().equals(idEmpleado)  ) {
                 return tecnico;
             }
         }

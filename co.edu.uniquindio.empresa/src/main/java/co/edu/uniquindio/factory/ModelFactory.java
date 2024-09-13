@@ -142,55 +142,55 @@ public class ModelFactory implements ICrudDepartamento, ICrudProyecto, ICrudGere
                 nombre("Nuevo plan de negocios").
                 codigo("17361").build();
         Proyecto proyecto2 = Proyecto.proyectobuilder().
-                nombre("").
-                codigo("").build();
+                nombre("Flores").
+                codigo("94hd1").build();
         Proyecto proyecto3 = Proyecto.proyectobuilder().
-                nombre("").
-                codigo("").build();
+                nombre("Hojas").
+                codigo("nco1").build();
         Proyecto proyecto4 = Proyecto.proyectobuilder().
-                nombre("").
-                codigo("").build();
+                nombre("Billares").
+                codigo("jdo21").build();
 
         //Empleados - Gerentes
         Gerente gerente1 = Gerente.gerenteBuilder().
-                nombre("").
-                idEmpleado("").
+                nombre("Fernando").
+                idEmpleado("123").
                 edad(34).build();
         Gerente gerente2 = Gerente.gerenteBuilder().
-                nombre("").
-                idEmpleado("").
+                nombre("Luisa").
+                idEmpleado("1234").
                 edad(22).build();
         Gerente gerente3 = Gerente.gerenteBuilder().
-                nombre("").
-                idEmpleado("").
+                nombre("Ana").
+                idEmpleado("12345").
                 edad(65).build();
         Gerente gerente4 = Gerente.gerenteBuilder().
-                nombre("").
-                idEmpleado("").
+                nombre("Oscar").
+                idEmpleado("123456").
                 edad(34).build();
 
 
         //Empleados - Tecnicos
         Tecnico tecnico1 = Tecnico.tecnicoBuilder().
-                nombre("").
-                idEmpleado("").
+                nombre("Julian").
+                idEmpleado("1").
                 edad(43).
                 especialidad("Office").build();
         Tecnico tecnico2 = Tecnico.tecnicoBuilder().
-                nombre("").
-                idEmpleado("").
+                nombre("Sofia").
+                idEmpleado("2").
                 edad(45).
-                especialidad("").build();
+                especialidad("Idiomas").build();
         Tecnico tecnico3 = Tecnico.tecnicoBuilder().
-                nombre("").
-                idEmpleado("").
+                nombre("Rosa").
+                idEmpleado("3").
                 edad(53).
-                especialidad("").build();
+                especialidad("Finanzas").build();
         Tecnico tecnico4 = Tecnico.tecnicoBuilder().
-                nombre("").
-                idEmpleado("").
+                nombre("Juan").
+                idEmpleado("4").
                 edad(65).
-                especialidad("").build();
+                especialidad("Porgramacion").build();
 
         empresa.agregarDepartamentos(departamento1);
         empresa.agregarDepartamentos(departamento2);
@@ -211,12 +211,24 @@ public class ModelFactory implements ICrudDepartamento, ICrudProyecto, ICrudGere
         empresa.agregarTecnico(tecnico3);
         empresa.agregarTecnico(tecnico4);
 
-        departamento1.agregarEmpleado(tecnico2);
-        departamento4.agregarEmpleado(gerente3);
+        departamento1.agregarEmpleado(tecnico4);
+        departamento2.agregarEmpleado(tecnico3);
+        departamento3.agregarEmpleado(tecnico2);
+        departamento4.agregarEmpleado(tecnico1);
+        departamento1.agregarEmpleado(gerente1);
+        departamento2.agregarEmpleado(gerente2);
+        departamento3.agregarEmpleado(gerente3);
+        departamento4.agregarEmpleado(gerente4);
 
+        proyecto1.asignarTecnico(tecnico4);
+        proyecto2.asignarTecnico(tecnico3);
         proyecto3.asignarTecnico(tecnico2);
-        proyecto3.asignarGerente(gerente4);
+        proyecto4.asignarTecnico(tecnico1);
 
+        proyecto1.asignarGerente(gerente3);
+        proyecto2.asignarGerente(gerente2);//jajaja ya lo miro
+        proyecto3.asignarGerente(gerente1);
+        proyecto4.asignarGerente(gerente4);
     }
 
 }

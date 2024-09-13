@@ -55,8 +55,23 @@ public class MainEmpresa {
         updateTecnico(modelFactory);
     }
 
-    private static void createTenico(ModelFactory modelFactory){
-        boolean centinela = modelFactory.createTecnico("Jamir", "0", 21, new Departamento("Sistemas", "0000"), "Artes marciales");
-        System.out.println("Elresultado fue " + centinela);
+    private static void createTecnico(ModelFactory modelFactory){
+        boolean centinela = modelFactory.createTecnico("Jamir", "4", 21, new Departamento("Sistemas", "0000"), "Artes marciales");
+        System.out.println("El resultado fue " + centinela);
+    }
+
+    private static void deleteTecnico(ModelFactory modelFactory) {
+        Boolean centinela = modelFactory.deleteTecnico("2");
+        System.out.println("El resultado fue " + centinela);
+    }
+
+    private static void readTecnico(ModelFactory modelFactory){
+        Tecnico tecnico = modelFactory.readTecnico("1");
+        System.out.println(tecnico.toString());
+    }
+
+    private static void updateTecnico(ModelFactory modelFactory){
+        Boolean centinela = modelFactory.updateTecnico("Jose Jose", "3", 20, new Departamento("Electricidad", "123456789"), "Cocinar");
+        System.out.println("El resultado fue " + centinela);
     }
 }
