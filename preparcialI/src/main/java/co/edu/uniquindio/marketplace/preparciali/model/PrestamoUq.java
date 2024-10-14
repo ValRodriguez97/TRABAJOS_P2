@@ -83,10 +83,11 @@ public class PrestamoUq implements ICrudObjeto, ICrudPrestamo, ICrudCliente, ICr
     }
 
     @Override
-    public boolean updateObjeto(String nombre){
+    public boolean updateObjeto(String nombre, Prestamo prestamoAsociado){
         Objeto objetoExistente = verificarObjeto(nombre);
         if(objetoExistente != null){
             objetoExistente.setNombre(nombre);
+            objetoExistente.setPrestamoAsociado(prestamoAsociado);
             return true;
         }
         return false;
@@ -127,13 +128,12 @@ public class PrestamoUq implements ICrudObjeto, ICrudPrestamo, ICrudCliente, ICr
     }
 
     @Override
-    public boolean createPrestamo(String numeroPrestamo, Date fechaPrestamo, Date fechaEntrega, String descripcion){
-        Prestamo prestamoExistente = verificarPrestamo(numeroPrestamo);
-        if (prestamoExistente != null){
-            getListaPrestamos().add(prestamoExistente);
-            return true;
-        }
-        return false;
+    public boolean createPrestamo(Prestamo prestamo){
+       if (prestamo != null) {
+           getListaPrestamos().add(prestamo);
+           return true;
+       }
+       return false;
     }
 
     @Override
@@ -146,14 +146,15 @@ public class PrestamoUq implements ICrudObjeto, ICrudPrestamo, ICrudCliente, ICr
     }
 
     @Override
-    public boolean updatePrestamo (String numeroPrestamo, Date fechaPrestamo, Date fechaEntrega, String descripcion){
+    public boolean updatePrestamo (String numeroPrestamo, Date fechaPrestamo, Date fechaEntrega, String descripcion, Cliente clienteAsociado, Empleado empleadoAsociado){
         Prestamo prestamoExistente = verificarPrestamo(numeroPrestamo);
         if (prestamoExistente != null){
             prestamoExistente.setNumeroPrestamo(numeroPrestamo);
             prestamoExistente.setFechaPrestamo(fechaPrestamo);
             prestamoExistente.setFechaEntrega(fechaEntrega);
             prestamoExistente.setDescripcion(descripcion);
-
+            prestamoExistente.setClienteAsociado(clienteAsociado);
+            prestamoExistente.setEmpleadoAsociado(empleadoAsociado);
             return true;
         }
         return false;
@@ -194,10 +195,9 @@ public class PrestamoUq implements ICrudObjeto, ICrudPrestamo, ICrudCliente, ICr
     }
 
     @Override
-    public boolean createCliente(String nombre, String apellido, String cedula, String edad){
-        Cliente clienteExistente = verificarCliente(cedula);
-        if (clienteExistente != null){
-            getListaClientes().add(clienteExistente);
+    public boolean createCliente(Cliente cliente){
+        if (cliente != null) {
+            getListaClientes().add(cliente);
             return true;
         }
         return false;
@@ -260,10 +260,9 @@ public class PrestamoUq implements ICrudObjeto, ICrudPrestamo, ICrudCliente, ICr
     }
 
     @Override
-    public boolean createEmpleado(String nombre, String apellido, String cedula, String edad){
-        Empleado  empleadoExistente = verificarEmpleado(cedula);
-        if (empleadoExistente != null){
-            getListaEmpleados().add(empleadoExistente);
+    public boolean createEmpleado(Empleado empleado){
+        if (empleado != null) {
+            getListaEmpleados().add(empleado);
             return true;
         }
         return false;

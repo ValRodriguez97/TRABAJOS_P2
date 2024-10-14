@@ -1,5 +1,7 @@
 package co.edu.uniquindio.marketplace.preparciali.model;
 
+import co.edu.uniquindio.marketplace.preparciali.model.builder.ClienteBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +11,10 @@ public class Cliente extends  Persona{
     public Cliente(String nombre, String apellido, String cedula, String edad){
         super(nombre, apellido, cedula, edad);
         this.listaPrestamosAsociados = new ArrayList<Prestamo>();
+    }
+
+    public static ClienteBuilder builder(){
+        return new ClienteBuilder();
     }
 
     public List<Prestamo> getListaPrestamosAsociados() {

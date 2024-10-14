@@ -1,14 +1,11 @@
 package co.edu.uniquindio.marketplace.preparciali.model;
 
 public abstract class Persona {
-    private String nombre;
-    private String apellido;
-    private String cedula;
-    private String edad;
+    protected String nombre;
+    protected String apellido;
+    protected String cedula;
+    protected String edad;
 
-    public Persona(){
-
-    }
     public Persona(String nombre, String apellido, String cedula, String edad) {
         this.nombre = nombre;
         this.apellido = apellido;

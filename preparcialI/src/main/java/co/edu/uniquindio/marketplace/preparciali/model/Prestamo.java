@@ -1,5 +1,7 @@
 package co.edu.uniquindio.marketplace.preparciali.model;
 
+import co.edu.uniquindio.marketplace.preparciali.model.builder.PrestamoBuilder;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,6 +23,10 @@ public class Prestamo {
         this.clienteAsociado = clienteAsociado;
         this.listaObjetosAsociados = new ArrayList<>();
         this.empleadoAsociado = empleadoAsociado;
+    }
+
+    public static PrestamoBuilder builder(){
+        return new PrestamoBuilder();
     }
 
     public String getNumeroPrestamo() {

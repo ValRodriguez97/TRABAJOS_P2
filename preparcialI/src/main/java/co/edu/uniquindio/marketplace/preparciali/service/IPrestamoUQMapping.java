@@ -27,6 +27,6 @@ public interface IPrestamoUQMapping {
     Objeto objetoDtoToObjeto(ObjetoDto objetoDto);
 
     PrestamoDto prestamoToPrestamoDto(Prestamo prestamo);
-    Prestamo prestamoToPrestamo(Prestamo prestamo);
+    Prestamo prestamoDtoToPrestamo(PrestamoDto prestamoDto);
 
 }
