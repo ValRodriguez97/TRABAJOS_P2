@@ -9,6 +9,7 @@ public interface ICrudEmpleado {
     Empleado readEmpleado(String cedula);
     boolean updateEmpleado(String cedula, String nombre, String apellido, String edad);
     boolean deleteEmpleado(String cedula);
-    List<Empleado> getEmpleados();
+    List<Empleado> listEmpleados();
+
     boolean verificarEmpleadoExistente(String cedula);
 }

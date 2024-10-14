@@ -9,6 +9,7 @@ public interface ICrudCliente {
     Cliente readCliente(String cedula);
     boolean updateCliente(String nombre, String apellido, String cedula, String edad);
     boolean deleteCliente(String cedula);
-    List<Cliente> getClientes();
+    List<Cliente> listClientes();
+
     boolean verificarClienteExistente(String cedula);
 }
