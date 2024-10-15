@@ -11,6 +11,5 @@ public interface ICrudObjeto {
     boolean updateObjeto(String nombre, Prestamo prestamoAsociado);
     boolean deleteObjeto(String nombre);
     List<Objeto> listObjetos();
-
     boolean verificarObjetoExistente(String nombre);
 }

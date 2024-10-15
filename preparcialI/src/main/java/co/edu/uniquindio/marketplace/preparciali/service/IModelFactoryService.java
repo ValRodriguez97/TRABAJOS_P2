@@ -15,20 +15,20 @@ public interface IModelFactoryService {
     List<ClienteDto> getClientes();
     boolean addCliente(ClienteDto clienteDto);
     boolean deleteCliente(String cedula);
-    boolean updateCliente(String nombre, String apellido, String cedula, String edad);
+    boolean updateCliente(String cedula, ClienteDto clienteDto);
 
     List<EmpleadoDto> getEmpleados();
     boolean addEmpleado(EmpleadoDto empleadoDto);
     boolean deleteEmpleado(String cedula);
-    boolean updateEmpleado(String nombre,EmpleadoDto empleadoDto);
+    boolean updateEmpleado(String nombre, EmpleadoDto empleadoDto);
 
     List<ObjetoDto> getObjetos();
     boolean addObjeto(ObjetoDto objetoDto);
     boolean deleteObjeto(String nombre);
-    boolean updateObjeto(ObjetoDto objetoDto);
+    boolean updateObjeto(String nombre, ObjetoDto objetoDto);
 
-    List<Prestamo> getPrestamos();
-    boolean addPrestamo(Prestamo prestamoDto);
+    List<PrestamoDto> getPrestamos();
+    boolean addPrestamo(PrestamoDto prestamoDto);
     boolean deletePrestamo(String numeroPrestamo);
     boolean updatePrestamo(String numeroPrestamo, PrestamoDto prestamoDto);
 }

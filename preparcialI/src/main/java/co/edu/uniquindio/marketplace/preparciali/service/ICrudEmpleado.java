@@ -10,6 +10,5 @@ public interface ICrudEmpleado {
     boolean updateEmpleado(String cedula, String nombre, String apellido, String edad);
     boolean deleteEmpleado(String cedula);
     List<Empleado> listEmpleados();
-
     boolean verificarEmpleadoExistente(String cedula);
 }

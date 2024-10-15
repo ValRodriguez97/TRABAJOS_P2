@@ -13,6 +13,5 @@ public interface ICrudPrestamo {
     boolean updatePrestamo(String numeroPrestamo, Date fechaPrestamo, Date fechaEntrega, String descripcion, Cliente clienteAsociado, Empleado empleadoAsociado);
     boolean deletePrestamo(String numeroPrestamo);
     List<Prestamo> listPrestamos();
-
     boolean verificarPrestamoExistente(String numeroPrestamo);
 }

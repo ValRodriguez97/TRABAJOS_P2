@@ -1,15 +1,12 @@
 package co.edu.uniquindio.marketplace.preparciali.model;
 
-import co.edu.uniquindio.marketplace.preparciali.service.ICrudCliente;
-import co.edu.uniquindio.marketplace.preparciali.service.ICrudEmpleado;
-import co.edu.uniquindio.marketplace.preparciali.service.ICrudObjeto;
-import co.edu.uniquindio.marketplace.preparciali.service.ICrudPrestamo;
+import co.edu.uniquindio.marketplace.preparciali.service.*;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class PrestamoUq implements ICrudObjeto, ICrudPrestamo, ICrudCliente, ICrudEmpleado {
+public class PrestamoUq implements ICrudCliente, ICrudPrestamo, ICrudEmpleado, ICrudObjeto {
     private String nombre;
     private List<Cliente> listaClientes;
     private List<Prestamo> listaPrestamos;
@@ -213,7 +210,7 @@ public class PrestamoUq implements ICrudObjeto, ICrudPrestamo, ICrudCliente, ICr
     }
 
     @Override
-    public boolean updateCliente(String nombre, String apellido,String cedula, String edad){
+    public boolean updateCliente(String cedula, String nombre,String apellido, String edad){
         Cliente clienteExistente = verificarCliente(cedula);
         if (clienteExistente != null){
             clienteExistente.setCedula(cedula);
