@@ -6,9 +6,12 @@ import co.edu.uniquindio.marketplace.preparciali.mapping.dto.ObjetoDto;
 import co.edu.uniquindio.marketplace.preparciali.mapping.dto.PrestamoDto;
 import co.edu.uniquindio.marketplace.preparciali.mapping.mappers.PrestamoUQMappingImplt;
 import co.edu.uniquindio.marketplace.preparciali.model.*;
+import co.edu.uniquindio.marketplace.preparciali.model.builder.ClienteBuilder;
 import co.edu.uniquindio.marketplace.preparciali.service.IModelFactoryService;
 import co.edu.uniquindio.marketplace.preparciali.service.IPrestamoUQFacade;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class ModelFactory implements IModelFactoryService {
@@ -26,7 +29,7 @@ public class ModelFactory implements IModelFactoryService {
     private ModelFactory(IPrestamoUQFacade prestamoUQFacade) {
         mapper = new PrestamoUQMappingImplt();
         this.prestamoUQFacade = prestamoUQFacade;
-       // prestamoUq = inicializarDatos();
+        inicializarDatos();
     }
 
    /* public PrestamoUq getPrestamoUq() {
@@ -40,6 +43,55 @@ public class ModelFactory implements IModelFactoryService {
     @Override
     public List<ClienteDto> getClientes() {
         return mapper.getClientesDto(prestamoUQFacade.listClientes());
+    }
+
+    public void  inicializarDatos() {
+        //Clientes
+        Cliente cliente1 = Cliente.builder()
+                .cedula("1234")
+                .nombre("Valentina")
+                .apellido("Rodriguez")
+                .edad("19")
+                .build();
+
+        Cliente cliente2 = Cliente.builder()
+                .cedula("81892")
+                .nombre("Jose")
+                .apellido("Suarez")
+                .edad("31")
+                .build();
+
+       //Empleados
+        Empleado empleado1 = Empleado.builder()
+                .cedula("81721")
+                .nombre("Carlos")
+                .apellido("Londoño")
+                .edad("61")
+                .build();
+
+        Empleado empleado2 = Empleado.builder()
+                .cedula("6719")
+                .nombre("Sara")
+                .apellido("Velasquez")
+                .edad("34")
+                .build();
+
+        //Prestamos
+        Prestamo prestamo1 = Prestamo.builder()
+                .numeroPrestamo("1234")
+                .fechaPrestamo(LocalDate.now())
+                .fechaEntrega(LocalDate.of(2024, 11, 02))
+                .descripcion("adiao")
+                .clienteAsociado(cliente1)
+                .empleadoAsociado(empleado2)
+                .build();
+
+
+        //Objetos
+        Objeto objeto1 = Objeto.builder()
+                .nombre("TV Samsung")
+                .prestamo(prestamo1)
+                .build();
     }
 
     @Override
@@ -220,12 +272,5 @@ public class ModelFactory implements IModelFactoryService {
         }
         return false;
     }
-
-
-    public static PrestamoUq inicializarDatos() {
-        PrestamoUq prestamoUq = new PrestamoUq("Prestamos UQ");
-        return prestamoUq;
-    }
-
 
 }

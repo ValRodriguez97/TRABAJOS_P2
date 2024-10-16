@@ -2,6 +2,7 @@ package co.edu.uniquindio.marketplace.preparciali.model;
 
 import co.edu.uniquindio.marketplace.preparciali.service.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -143,7 +144,7 @@ public class PrestamoUq implements ICrudCliente, ICrudPrestamo, ICrudEmpleado, I
     }
 
     @Override
-    public boolean updatePrestamo (String numeroPrestamo, Date fechaPrestamo, Date fechaEntrega, String descripcion, Cliente clienteAsociado, Empleado empleadoAsociado){
+    public boolean updatePrestamo (String numeroPrestamo, LocalDate fechaPrestamo, LocalDate fechaEntrega, String descripcion, Cliente clienteAsociado, Empleado empleadoAsociado){
         Prestamo prestamoExistente = verificarPrestamo(numeroPrestamo);
         if (prestamoExistente != null){
             prestamoExistente.setNumeroPrestamo(numeroPrestamo);

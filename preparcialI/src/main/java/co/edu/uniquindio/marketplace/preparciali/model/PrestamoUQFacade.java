@@ -2,6 +2,7 @@ package co.edu.uniquindio.marketplace.preparciali.model;
 
 import co.edu.uniquindio.marketplace.preparciali.service.IPrestamoUQFacade;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -86,7 +87,7 @@ public class PrestamoUQFacade implements IPrestamoUQFacade {
     }
 
     @Override
-    public boolean updatePrestamo(String numeroPrestamo, Date fechaPrestamo, Date fechaEntrega, String descripcion, Cliente clienteAsociado, Empleado empleadoAsociado){
+    public boolean updatePrestamo(String numeroPrestamo, LocalDate fechaPrestamo, LocalDate fechaEntrega, String descripcion, Cliente clienteAsociado, Empleado empleadoAsociado){
         return prestamoUq.updatePrestamo(numeroPrestamo, fechaPrestamo, fechaEntrega, descripcion, clienteAsociado, empleadoAsociado);
     }
 

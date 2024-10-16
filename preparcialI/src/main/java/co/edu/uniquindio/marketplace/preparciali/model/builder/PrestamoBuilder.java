@@ -4,12 +4,13 @@ import co.edu.uniquindio.marketplace.preparciali.model.Cliente;
 import co.edu.uniquindio.marketplace.preparciali.model.Empleado;
 import co.edu.uniquindio.marketplace.preparciali.model.Prestamo;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class PrestamoBuilder {
     protected String numeroPrestamo;
-    protected Date fechaPrestamo;
-    protected Date fechaEntrega;
+    protected LocalDate fechaPrestamo;
+    protected LocalDate fechaEntrega;
     protected String descripcion;
     protected Cliente clienteAsociado;
     protected Empleado empleadoAsociado;
@@ -19,12 +20,12 @@ public class PrestamoBuilder {
         return this;
     }
 
-    public PrestamoBuilder fechaPrestamo(Date fechaPrestamo) {
+    public PrestamoBuilder fechaPrestamo(LocalDate fechaPrestamo) {
         this.fechaPrestamo = fechaPrestamo;
         return this;
     }
 
-    public PrestamoBuilder fechaEntrega(Date fechaEntrega) {
+    public PrestamoBuilder fechaEntrega(LocalDate fechaEntrega) {
         this.fechaEntrega = fechaEntrega;
         return this;
     }

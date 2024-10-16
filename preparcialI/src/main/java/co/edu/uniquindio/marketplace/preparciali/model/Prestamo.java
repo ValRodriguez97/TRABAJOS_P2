@@ -2,20 +2,21 @@ package co.edu.uniquindio.marketplace.preparciali.model;
 
 import co.edu.uniquindio.marketplace.preparciali.model.builder.PrestamoBuilder;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Prestamo {
     private String numeroPrestamo;
-    private Date fechaPrestamo;
-    private Date fechaEntrega ;
+    private LocalDate fechaPrestamo;
+    private LocalDate fechaEntrega ;
     private String descripcion;
     private Cliente clienteAsociado;
     private List<Objeto> listaObjetosAsociados;
     private Empleado empleadoAsociado;
 
-    public Prestamo(String numeroPrestamo, Date fechaPrestamo, Date fechaEntrega, String descripcion, Cliente clienteAsociado, Empleado empleadoAsociado) {
+    public Prestamo(String numeroPrestamo, LocalDate fechaPrestamo, LocalDate fechaEntrega, String descripcion, Cliente clienteAsociado, Empleado empleadoAsociado) {
         this.numeroPrestamo = numeroPrestamo;
         this.fechaPrestamo = fechaPrestamo;
         this.fechaEntrega = fechaEntrega;
@@ -37,19 +38,19 @@ public class Prestamo {
         this.numeroPrestamo = numeroPrestamo;
     }
 
-    public Date getFechaPrestamo() {
+    public LocalDate getFechaPrestamo() {
         return fechaPrestamo;
     }
 
-    public void setFechaPrestamo(Date fechaPrestamo) {
+    public void setFechaPrestamo(LocalDate fechaPrestamo) {
         this.fechaPrestamo = fechaPrestamo;
     }
 
-    public Date getFechaEntrega() {
+    public LocalDate getFechaEntrega() {
         return fechaEntrega;
     }
 
-    public void setFechaEntrega(Date fechaEntrega) {
+    public void setFechaEntrega(LocalDate fechaEntrega) {
         this.fechaEntrega = fechaEntrega;
     }
 
